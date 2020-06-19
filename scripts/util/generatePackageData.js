@@ -1,6 +1,6 @@
 const semver = require('semver');
 const { packageJson } = require('../../util');
-const { TAG_NEXT } = require('../constants');
+const { TAG_NEXT, TAG_DEV } = require('../constants');
 const determineChangeLevel = require('./determineChangeLevel');
 
 const {
@@ -19,11 +19,11 @@ function pickTagId(nextVersion) {
   const commitHash = TRAVIS_COMMIT.substr(0, 6);
 
   if (TRAVIS_BRANCH === NEXT_BRANCH) {
-    return `${nextVersion}-next-${commitHash}`;
+    return `${nextVersion}-${TAG_NEXT}-${commitHash}`;
   }
 
   if (TRAVIS_BRANCH !== DEFAULT_BRANCH) {
-    return `${nextVersion}-dev-${commitHash}`;
+    return `${nextVersion}-${TAG_DEV}-${commitHash}`;
   }
 
   throw Error('pickTagId: Encountered an unexpected input.');
