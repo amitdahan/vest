@@ -34,7 +34,7 @@ function generatePackageData(packageName, messages) {
   const changeLevel = determineChangeLevel(messages.join(''));
   const nextVersion = semver.inc(version, changeLevel);
   const tagId = pickTagId(nextVersion);
-  const tag = tagId === nextVersion ? null : TAG_NEXT;
+  const [, tag] = tagId.split('-');
   return {
     changeLevel,
     messages,
