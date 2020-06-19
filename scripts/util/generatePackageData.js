@@ -16,8 +16,14 @@ function pickTagId(nextVersion) {
     return nextVersion;
   }
 
-  if (TRAVIS_BRANCH === NEXT_BRANCH || TRAVIS_BRANCH !== DEFAULT_BRANCH) {
-    return `${nextVersion}-next-${TRAVIS_COMMIT.substr(0, 6)}`;
+  const commitHash = TRAVIS_COMMIT.substr(0, 6);
+
+  if (TRAVIS_BRANCH === NEXT_BRANCH) {
+    return `${nextVersion}-next-${commitHash}`;
+  }
+
+  if (TRAVIS_BRANCH !== DEFAULT_BRANCH) {
+    return `${nextVersion}-dev-${commitHash}`;
   }
 
   throw Error('pickTagId: Encountered an unexpected input.');
