@@ -5,17 +5,17 @@ const opts = require('vx/opts');
 const { usePackage } = require('vx/vxContext');
 const vxPath = require('vx/vxPath');
 
-const configOpt = `--config ${path.resolve(
-  vxPath.JEST_CONFIG_PATH,
-  opts.fileNames.JEST_CONFIG
+const configOpt = `--workspace ${path.resolve(
+  vxPath.VITEST_CONFIG_PATH,
+  opts.fileNames.VITEST_CONFIG,
 )}`;
 
 function test({ cliOptions }) {
   const pkgName = usePackage();
 
   exec([
-    'yarn jest',
-    pkgName && `--rootDir ${vxPath.package(pkgName)}`,
+    'yarn vitest run',
+    pkgName && `--project ${vxPath.package(pkgName)}`,
     configOpt,
     cliOptions,
   ]);

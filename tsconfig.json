@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -21,6 +20,6 @@
     "strict": true,
     "target": "ES2015"
   },
-  "files": ["./vx/config/jest/globals.d.ts"],
+  "files": ["./vx/config/vitest/globals.d.ts"],
   "include": ["./packages/*/src/**/*.ts"]
 }

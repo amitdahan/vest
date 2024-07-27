@@ -27,7 +27,7 @@ module.exports = function genTsConfig() {
 
     if (isConfigEqual(tsConfigPath, tsConfig)) {
       logger.log(
-        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`
+        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`,
       );
       return;
     }
@@ -95,7 +95,7 @@ function rootTsConfigTemplate() {
       strict: true,
       target: 'ES2015',
     },
-    files: [`${vxPath.rel(vxPath.JEST_CONFIG_PATH)}/globals.d.ts`],
+    files: [`${vxPath.rel(vxPath.VITEST_CONFIG_PATH)}/globals.d.ts`],
     include: [vxPath.rel(vxPath.packageSrc('*', '**/*.ts'))],
   };
 }

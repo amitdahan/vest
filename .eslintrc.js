@@ -1,13 +1,10 @@
 module.exports = {
   env: {
     es6: true,
-    jest: true,
     node: true,
   },
   extends: [
     'eslint:recommended',
-    'plugin:jest/recommended',
-    'plugin:jest/style',
     'plugin:import/errors',
     'plugin:import/warnings',
     'prettier',
@@ -56,13 +53,6 @@ module.exports = {
       },
     },
     {
-      excludedFiles: ['./**/__tests__/**/*.*'],
-      files: ['*.ts'],
-      rules: {
-        'jest/no-export': 0,
-      },
-    },
-    {
       files: ['./**/vest/src/**/*.*'],
       excludedFiles: ['./**/__tests__/**/*.*'],
       rules: {
@@ -71,7 +61,7 @@ module.exports = {
     },
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['jest', 'vest-internal'],
+  plugins: ['vest-internal'],
   rules: {
     complexity: [2, { max: 5 }],
     'import/extensions': [0, 'ignorePackages'],
@@ -100,9 +90,6 @@ module.exports = {
         ],
       },
     ],
-    'jest/expect-expect': 0,
-    'jest/no-identical-title': 0,
-    'jest/no-standalone-expect': 0,
     'max-params': [1, { max: 4 }],
     'no-console': 2,
     'no-else-return': 1,
