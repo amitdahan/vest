@@ -1,11 +1,12 @@
+import { TIsolateTest } from 'IsolateTest';
+import { VestTest } from 'VestTest';
+import { mockIsolateTest } from 'vestMocks';
+import { describe, it, expect, beforeEach, test, vi, afterEach } from 'vitest';
 import wait from 'wait';
 
 import { TestPromise } from '../../../testUtils/testPromise';
 
-import { TIsolateTest } from 'IsolateTest';
-import { VestTest } from 'VestTest';
 import * as vest from 'vest';
-import { mockIsolateTest } from 'vestMocks';
 
 const fieldName = 'unicycle';
 const message = 'I am Root.';
@@ -39,7 +40,7 @@ describe('IsolateTest', () => {
     });
 
     afterEach(() => {
-      jest.resetAllMocks();
+      vi.resetAllMocks();
     });
 
     it('Should set status to failed', () => {
@@ -70,9 +71,9 @@ describe('IsolateTest', () => {
     });
 
     describe('final statuses', () => {
-      let control = jest.fn();
+      let control = vi.fn();
       beforeEach(() => {
-        control = jest.fn();
+        control = vi.fn();
       });
       it('keep status unchanged when `failed`', () => {
         vest.create(() => {

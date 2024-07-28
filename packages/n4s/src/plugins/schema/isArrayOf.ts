@@ -8,16 +8,16 @@ import runLazyRule from 'runLazyRule';
 
 export function isArrayOf(
   inputArray: any[],
-  currentRule: LazyRuleRunners
+  currentRule: LazyRuleRunners,
 ): RuleDetailedResult {
   return ruleReturn.defaultToPassing(
     mapFirst(inputArray, (currentValue, breakout, index) => {
       const res = ctx.run(
         { value: currentValue, set: true, meta: { index } },
-        () => runLazyRule(currentRule, currentValue)
+        () => runLazyRule(currentRule, currentValue),
       );
 
       breakout(!res.pass, res);
-    })
+    }),
   );
 }

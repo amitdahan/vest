@@ -1,4 +1,5 @@
 import { createTinyState } from 'tinyState';
+import { describe, it, expect } from 'vitest';
 
 describe('tinyTest', () => {
   it('Should be a function', () => {

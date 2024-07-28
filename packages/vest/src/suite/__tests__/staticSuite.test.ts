@@ -1,7 +1,8 @@
-import wait from 'wait';
-
 import { SuiteSerializer } from 'SuiteSerializer';
 import { VestIsolateType } from 'VestIsolateType';
+import { describe, it, expect } from 'vitest';
+import wait from 'wait';
+
 import * as vest from 'vest';
 import { staticSuite } from 'vest';
 

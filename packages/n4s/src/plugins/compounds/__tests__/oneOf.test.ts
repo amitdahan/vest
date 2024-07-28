@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { enforce } from 'enforce';
 import * as ruleReturn from 'ruleReturn';
 
@@ -7,7 +9,7 @@ import 'compounds';
 describe('enforce.oneOf', () => {
   it('Should fail when multiple enforcements are met', () => {
     expect(
-      enforce.oneOf(enforce.isNumber(), enforce.greaterThan(2)).run(3)
+      enforce.oneOf(enforce.isNumber(), enforce.greaterThan(2)).run(3),
     ).toEqual(ruleReturn.failing());
   });
 
@@ -18,7 +20,7 @@ describe('enforce.oneOf', () => {
           first: 'John',
           last: 'Doe',
         },
-      })
+      }),
     ).toEqual(ruleReturn.passing());
     expect(User.run({ id: 11 })).toEqual(ruleReturn.passing());
   });

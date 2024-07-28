@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { enforce } from 'enforce';
 import * as ruleReturn from 'ruleReturn';
 import 'schema';
@@ -9,7 +11,7 @@ describe('enforce.shape exact matching', () => {
       expect(
         enforce
           .shape({ username: enforce.isString(), age: enforce.isNumber() })
-          .run({ username: 'ealush', age: 31, foo: 'bar' })
+          .run({ username: 'ealush', age: 31, foo: 'bar' }),
       ).toEqual(ruleReturn.failing());
     });
   });

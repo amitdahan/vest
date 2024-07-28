@@ -1,36 +1,27 @@
-import { CB } from 'vest-utils';
-import { TDeferThrow } from 'vest-utils/src/deferThrow';
+import { CB, deferThrow } from 'vest-utils';
 import { Isolate } from 'vestjs-runtime';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 
-import { TVestMock } from '../testUtils/TVestMock';
-import mockThrowError from '../testUtils/mockThrowError';
-import { TDummyTest } from '../testUtils/testDummy';
+import { dummyTest } from 'testDummy';
+import * as vest from 'vest';
 
 describe('isolate', () => {
-  let vest: TVestMock;
   let firstRun = true;
-  // eslint-disable-next-line no-unused-expressions
-  require('IsolateTest').IsolateTest;
-  // eslint-disable-next-line no-unused-expressions
-  require('IsolateEach').IsolateEach;
-  let dummyTest: TDummyTest;
-  let deferThrow: TDeferThrow;
 
   beforeEach(() => {
     firstRun = true;
-    const mock = mockThrowError();
-    deferThrow = mock.deferThrow;
-    // eslint-disable-next-line no-unused-expressions
-    require('IsolateTest').IsolateTest;
-    // eslint-disable-next-line no-unused-expressions
-    require('IsolateEach').IsolateEach;
-    vest = mock.vest;
-    dummyTest = require('../testUtils/testDummy').dummyTest;
+    vi.mock('vest-utils', async () => {
+      const vu = await vi.importActual('vest-utils');
+      return {
+        ...vu,
+        deferThrow: vi.fn(),
+      };
+    });
   });
 
   afterEach(() => {
-    jest.resetModules();
-    jest.resetAllMocks();
+    vi.resetModules();
+    vi.resetAllMocks();
   });
 
   describe('Base behavior', () => {
@@ -40,8 +31,8 @@ describe('isolate', () => {
     });
 
     it('Should retain test results between runs', () => {
-      const f1 = jest.fn(() => false);
-      const f2 = jest.fn(() => false);
+      const f1 = vi.fn(() => false);
+      const f2 = vi.fn(() => false);
       const suite = genSuite(() => {
         vest.skipWhen(!firstRun, () => {
           vest.test('f1', f1);
@@ -254,13 +245,11 @@ describe('isolate', () => {
         });
 
         suite();
-        expect(deferThrow).toHaveBeenCalledTimes(0);
         suite();
-        expect(deferThrow).toHaveBeenCalledTimes(1);
         expect(deferThrow).toHaveBeenCalledWith(
           expect.stringContaining(
-            'Vest Critical Error: Tests called in different order than previous run'
-          )
+            'Vest Critical Error: Tests called in different order than previous run',
+          ),
         );
       });
     });

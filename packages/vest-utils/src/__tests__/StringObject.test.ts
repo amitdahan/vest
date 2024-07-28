@@ -1,4 +1,5 @@
 import { StringObject } from 'StringObject';
+import { describe, test, expect } from 'vitest';
 
 describe('StringObject', () => {
   test('returns an instance of String', () => {

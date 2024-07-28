@@ -1,4 +1,5 @@
 import seq, { genSeq } from 'seq';
+import { describe, it, expect } from 'vitest';
 
 describe('lib:seq', () => {
   it('Should return a new id on each run', () => {

@@ -1,4 +1,5 @@
 import either from 'either';
+import { describe, it, expect } from 'vitest';
 
 describe('either', () => {
   it('returns true if one argument is truthy and the other is falsy', () => {

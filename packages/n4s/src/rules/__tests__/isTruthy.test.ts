@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { isTruthy } from 'isTruthy';
 
 describe('Tests isTruthy rule', () => {

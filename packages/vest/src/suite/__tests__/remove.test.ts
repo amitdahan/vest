@@ -1,4 +1,5 @@
 import { Modes } from 'Modes';
+import { describe, it, expect } from 'vitest';
 import wait from 'wait';
 
 import { dummyTest } from '../../testUtils/testDummy';

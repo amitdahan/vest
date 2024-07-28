@@ -13,19 +13,19 @@ import { wrapTestMemo } from 'test.memo';
 function vestTest<F extends TFieldName>(
   fieldName: F,
   message: string,
-  cb: TestFn
+  cb: TestFn,
 ): TIsolateTest;
 function vestTest<F extends TFieldName>(fieldName: F, cb: TestFn): TIsolateTest;
 function vestTest<F extends TFieldName>(
   fieldName: F,
   message: string,
   cb: TestFn,
-  key: IsolateKey
+  key: IsolateKey,
 ): TIsolateTest;
 function vestTest<F extends TFieldName>(
   fieldName: F,
   cb: TestFn,
-  key: IsolateKey
+  key: IsolateKey,
 ): TIsolateTest;
 // @vx-allow use-use
 function vestTest<F extends TFieldName>(
@@ -66,7 +66,7 @@ function validateTestParams(fieldName: string, testFn: TestFn): void {
       fn_name: fnName,
       param: 'fieldName',
       expected: 'string',
-    })
+    }),
   );
   invariant(
     isFunction(testFn),
@@ -74,6 +74,6 @@ function validateTestParams(fieldName: string, testFn: TestFn): void {
       fn_name: fnName,
       param: 'callback',
       expected: 'function',
-    })
+    }),
   );
 }

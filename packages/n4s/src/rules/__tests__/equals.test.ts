@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { sample } from 'lodash';
+import { describe, it, expect } from 'vitest';
 
 import { equals } from 'equals';
 

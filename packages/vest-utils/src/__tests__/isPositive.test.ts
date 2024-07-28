@@ -1,4 +1,5 @@
 import { isPositive } from 'isPositive';
+import { describe, it, expect } from 'vitest';
 
 describe('Test isPositive rule', () => {
   it('Should return false for zero', () => {

@@ -1,4 +1,5 @@
 import { createBus } from 'bus';
+import { describe, it, expect, vi } from 'vitest';
 
 describe('bus', () => {
   it('should be a function', () => {
@@ -14,7 +15,7 @@ describe('bus', () => {
 
   it('should emit events', () => {
     const bus = createBus();
-    const spy = jest.fn();
+    const spy = vi.fn();
     bus.on('test', spy);
     bus.emit('test');
     expect(spy).toHaveBeenCalled();
@@ -22,7 +23,7 @@ describe('bus', () => {
 
   it('should emit events with data', () => {
     const bus = createBus();
-    const spy = jest.fn();
+    const spy = vi.fn();
     bus.on('test', spy);
     bus.emit('test', 'testData');
     expect(spy).toHaveBeenCalledWith('testData');
@@ -30,8 +31,8 @@ describe('bus', () => {
 
   it('should emit events with multiple listeners', () => {
     const bus = createBus();
-    const spy1 = jest.fn();
-    const spy2 = jest.fn();
+    const spy1 = vi.fn();
+    const spy2 = vi.fn();
     bus.on('test', spy1);
     bus.on('test', spy2);
     bus.emit('test');
@@ -41,8 +42,8 @@ describe('bus', () => {
 
   it('should emit events with multiple listeners and data', () => {
     const bus = createBus();
-    const spy1 = jest.fn();
-    const spy2 = jest.fn();
+    const spy1 = vi.fn();
+    const spy2 = vi.fn();
     bus.on('test', spy1);
     bus.on('test', spy2);
     bus.emit('test', 'test1');
@@ -52,7 +53,7 @@ describe('bus', () => {
 
   test('on returns an object with an `off` function', () => {
     const bus = createBus();
-    const spy = jest.fn();
+    const spy = vi.fn();
     const off = bus.on('test', spy);
     expect(off).toBeInstanceOf(Object);
     expect(off.off).toBeInstanceOf(Function);
@@ -60,7 +61,7 @@ describe('bus', () => {
 
   test('off should remove a listener', () => {
     const bus = createBus();
-    const spy = jest.fn();
+    const spy = vi.fn();
     const off = bus.on('test', spy);
     off.off();
     bus.emit('test');
@@ -69,8 +70,8 @@ describe('bus', () => {
 
   test('off should only remove specific handler', () => {
     const bus = createBus();
-    const spy1 = jest.fn();
-    const spy2 = jest.fn();
+    const spy1 = vi.fn();
+    const spy2 = vi.fn();
     const off = bus.on('test', spy1);
     bus.on('test', spy2);
     off.off();
@@ -82,9 +83,9 @@ describe('bus', () => {
   describe('"ANY" wildcard (*)', () => {
     it('Should run the wildcard handler on any event', () => {
       const bus = createBus();
-      const spy1 = jest.fn();
-      const spy2 = jest.fn();
-      const spy3 = jest.fn();
+      const spy1 = vi.fn();
+      const spy2 = vi.fn();
+      const spy3 = vi.fn();
       bus.on('t1', spy1);
       bus.on('t2', spy2);
       bus.on('*', spy3);
@@ -103,10 +104,10 @@ describe('bus', () => {
 
     it('Should call the wildcard last, regardless of when it was defined', () => {
       const bus = createBus();
-      const spy1 = jest.fn();
-      const spy2 = jest.fn();
-      const spy3 = jest.fn();
-      const spy4 = jest.fn();
+      const spy1 = vi.fn();
+      const spy2 = vi.fn();
+      const spy3 = vi.fn();
+      const spy4 = vi.fn();
       bus.on('t1', spy1);
       bus.on('*', spy4);
       bus.on('t1', spy2);

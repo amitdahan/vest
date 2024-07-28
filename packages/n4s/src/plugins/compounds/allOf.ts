@@ -10,6 +10,6 @@ export function allOf(value: unknown, ...rules: Lazy[]): RuleDetailedResult {
     mapFirst(rules, (rule, breakout) => {
       const res = runLazyRule(rule, value);
       breakout(!res.pass, res);
-    })
+    }),
   );
 }

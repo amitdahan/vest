@@ -19,7 +19,7 @@ import { useCreateSuiteResult } from 'suiteResult';
 // @vx-allow use-use
 export function skipWhen<F extends TFieldName, G extends TGroupName>(
   condition: TDraftCondition<F, G>,
-  callback: CB
+  callback: CB,
 ): void {
   Isolate.create(VestIsolateType.SkipWhen, () => {
     SuiteContext.run(
@@ -31,10 +31,10 @@ export function skipWhen<F extends TFieldName, G extends TGroupName>(
           // Otherwise, we should skip the test if the conditional is true.
           optionalFunctionValue(
             condition,
-            optionalFunctionValue(useCreateSuiteResult)
+            optionalFunctionValue(useCreateSuiteResult),
           ),
       },
-      callback
+      callback,
     );
   });
 }

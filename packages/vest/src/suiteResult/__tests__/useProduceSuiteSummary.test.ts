@@ -1,9 +1,10 @@
+import { Modes } from 'Modes';
+import { describe, it, expect } from 'vitest';
 import wait from 'wait';
 
 import { ser } from '../../testUtils/suiteDummy';
 import { dummyTest } from '../../testUtils/testDummy';
 
-import { Modes } from 'Modes';
 import * as vest from 'vest';
 
 describe('useProduceSuiteSummary', () => {

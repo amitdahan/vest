@@ -28,7 +28,7 @@ import { useHasOnliedTests } from 'useHasOnliedTests';
  */
 // @vx-allow use-use
 export function include<F extends TFieldName, G extends TGroupName>(
-  fieldName: F
+  fieldName: F,
 ): {
   when: (condition: F | TFieldName | TDraftCondition<F, G>) => void;
 } {
@@ -49,7 +49,7 @@ export function include<F extends TFieldName, G extends TGroupName>(
 
     // This callback will run as part of the "isExcluded" series of checks
     inclusion[fieldName] = function isIncluded(
-      currentNode: TIsolateTest
+      currentNode: TIsolateTest,
     ): boolean {
       if (isStringValue(condition)) {
         return useHasOnliedTests(currentNode, condition);
@@ -57,7 +57,7 @@ export function include<F extends TFieldName, G extends TGroupName>(
 
       return optionalFunctionValue(
         condition,
-        optionalFunctionValue(useCreateSuiteResult)
+        optionalFunctionValue(useCreateSuiteResult),
       );
     };
   }

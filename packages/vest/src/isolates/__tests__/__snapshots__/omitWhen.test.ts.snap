@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`omitWhen When conditional is falsy boolean conditional Should have all tests within the omit block referenced in the result 1`] = `
+exports[`omitWhen > When conditional is falsy > boolean conditional > Should have all tests within the omit block referenced in the result 1`] = `
 {
   "field_1": {
     "errorCount": 1,
@@ -41,7 +41,7 @@ exports[`omitWhen When conditional is falsy boolean conditional Should have all 
 }
 `;
 
-exports[`omitWhen When conditional is falsy boolean conditional Should run tests normally 1`] = `
+exports[`omitWhen > When conditional is falsy > boolean conditional > Should run tests normally 1`] = `
 {
   "field_1": {
     "errorCount": 1,
@@ -82,130 +82,7 @@ exports[`omitWhen When conditional is falsy boolean conditional Should run tests
 }
 `;
 
-exports[`omitWhen When conditional is falsy boolean conditional Should run tests normally 2`] = `
-{
-  "field_1": {
-    "errorCount": 1,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 2,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_2": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_3": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_4": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 1,
-    "valid": true,
-    "warnCount": 0,
-    "warnings": [],
-  },
-}
-`;
-
-exports[`omitWhen When conditional is falsy function conditional Should have all tests within the omit block referenced in the result 1`] = `
-{
-  "field_1": {
-    "errorCount": 1,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 2,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_2": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_3": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_4": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-}
-`;
-
-exports[`omitWhen When conditional is falsy function conditional Should run tests normally 1`] = `
-{
-  "field_1": {
-    "errorCount": 1,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 2,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_2": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_3": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-  "field_4": SummaryBase {
-    "errorCount": 0,
-    "errors": [],
-    "pendingCount": 0,
-    "testCount": 0,
-    "valid": false,
-    "warnCount": 0,
-    "warnings": [],
-  },
-}
-`;
-
-exports[`omitWhen When conditional is falsy function conditional Should run tests normally 2`] = `
+exports[`omitWhen > When conditional is falsy > boolean conditional > Should run tests normally 2`] = `
 {
   "field_1": {
     "errorCount": 1,
@@ -246,7 +123,130 @@ exports[`omitWhen When conditional is falsy function conditional Should run test
 }
 `;
 
-exports[`omitWhen When conditional is truthy boolean conditional Should avoid running the omitted tests 1`] = `
+exports[`omitWhen > When conditional is falsy > function conditional > Should have all tests within the omit block referenced in the result 1`] = `
+{
+  "field_1": {
+    "errorCount": 1,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 2,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_2": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_3": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_4": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+}
+`;
+
+exports[`omitWhen > When conditional is falsy > function conditional > Should run tests normally 1`] = `
+{
+  "field_1": {
+    "errorCount": 1,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 2,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_2": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_3": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_4": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+}
+`;
+
+exports[`omitWhen > When conditional is falsy > function conditional > Should run tests normally 2`] = `
+{
+  "field_1": {
+    "errorCount": 1,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 2,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_2": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_3": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 0,
+    "valid": false,
+    "warnCount": 0,
+    "warnings": [],
+  },
+  "field_4": SummaryBase {
+    "errorCount": 0,
+    "errors": [],
+    "pendingCount": 0,
+    "testCount": 1,
+    "valid": true,
+    "warnCount": 0,
+    "warnings": [],
+  },
+}
+`;
+
+exports[`omitWhen > When conditional is truthy > boolean conditional > Should avoid running the omitted tests 1`] = `
 SuiteSummary {
   "errorCount": 1,
   "errors": [
@@ -319,7 +319,7 @@ SuiteSummary {
 }
 `;
 
-exports[`omitWhen When conditional is truthy boolean conditional Should skip and not run omitted fields when no filter provided 1`] = `
+exports[`omitWhen > When conditional is truthy > boolean conditional > Should skip and not run omitted fields when no filter provided 1`] = `
 SuiteSummary {
   "errorCount": 1,
   "errors": [
@@ -392,7 +392,7 @@ SuiteSummary {
 }
 `;
 
-exports[`omitWhen When conditional is truthy function conditional Should avoid running the omitted tests 1`] = `
+exports[`omitWhen > When conditional is truthy > function conditional > Should avoid running the omitted tests 1`] = `
 SuiteSummary {
   "errorCount": 1,
   "errors": [
@@ -465,7 +465,7 @@ SuiteSummary {
 }
 `;
 
-exports[`omitWhen When conditional is truthy function conditional Should skip and not run omitted fields when no filter provided 1`] = `
+exports[`omitWhen > When conditional is truthy > function conditional > Should skip and not run omitted fields when no filter provided 1`] = `
 SuiteSummary {
   "errorCount": 1,
   "errors": [

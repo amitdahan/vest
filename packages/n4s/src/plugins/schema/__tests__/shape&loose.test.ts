@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { enforce } from 'enforce';
 import * as ruleReturn from 'ruleReturn';
 import 'schema';

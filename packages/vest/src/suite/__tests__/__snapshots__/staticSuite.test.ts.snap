@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`staticSuite dump should output a dump of the suite 1`] = `
+exports[`staticSuite > dump > should output a dump of the suite 1`] = `
 {
   "$type": "Suite",
   "abortController": AbortController {},

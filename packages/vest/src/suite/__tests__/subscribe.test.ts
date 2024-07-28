@@ -1,7 +1,8 @@
+import { SuiteSerializer } from 'SuiteSerializer';
 import { enforce } from 'n4s';
+import { describe, it, expect, vi } from 'vitest';
 import wait from 'wait';
 
-import { SuiteSerializer } from 'SuiteSerializer';
 import * as vest from 'vest';
 
 describe('suite.subscribe', () => {
@@ -12,7 +13,7 @@ describe('suite.subscribe', () => {
   });
 
   it('Should call the callback on suite updates', async () => {
-    const cb = jest.fn(() => {
+    const cb = vi.fn(() => {
       dumps.push(SuiteSerializer.serialize(suite));
     });
     let callCount = cb.mock.calls.length;
@@ -53,7 +54,7 @@ describe('suite.subscribe', () => {
 
   describe('unsubscribe', () => {
     it('Should unsubscribe future events', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       const suite = vest.create('suite', () => {
         vest.test('field', () => {});
       });

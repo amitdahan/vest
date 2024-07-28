@@ -1,19 +1,20 @@
-import wait from 'wait';
-
-import { TestPromise } from '../../../testUtils/testPromise';
-
 import { TIsolateTest } from 'IsolateTest';
 import { Modes } from 'Modes';
 import { VestTest } from 'VestTest';
 import promisify from 'promisify';
+import { describe, it, expect, vi } from 'vitest';
+import wait from 'wait';
+
+import { TestPromise } from '../../../testUtils/testPromise';
+
 import * as vest from 'vest';
 import { test as vestTest, enforce } from 'vest';
 
 describe('test.memo', () => {
   describe('cache hit', () => {
     it('Should return without calling callback', () => {
-      const cb1 = jest.fn();
-      const cb2 = jest.fn(() => TestPromise(() => undefined));
+      const cb1 = vi.fn();
+      const cb2 = vi.fn(() => TestPromise(() => undefined));
       const suite = vest.create(() => {
         vestTest.memo('f1', cb1, [1]);
         vestTest.memo('f1', cb2, [2]);
@@ -39,7 +40,7 @@ describe('test.memo', () => {
             vest.warn();
             return false;
           },
-          [{}]
+          [{}],
         );
       })();
 
@@ -61,7 +62,7 @@ describe('test.memo', () => {
               vest.warn();
               return false;
             },
-            [4]
+            [4],
           );
         });
 
@@ -90,7 +91,7 @@ describe('test.memo', () => {
                 await wait(500);
                 enforce(1).equals(2);
               },
-              [1]
+              [1],
             );
             vestTest.memo(
               'field2',
@@ -98,7 +99,7 @@ describe('test.memo', () => {
                 await wait(500);
                 enforce(1).equals(2);
               },
-              [2]
+              [2],
             );
           });
 
@@ -129,8 +130,8 @@ describe('test.memo', () => {
               async () => {
                 await wait(10);
               },
-              [true]
-            )
+              [true],
+            ),
           );
 
           if (count === 1) {
@@ -150,9 +151,9 @@ describe('test.memo', () => {
 
   describe('cache miss', () => {
     it('Should run test normally', () => {
-      const cb1 = jest.fn(res => res);
-      const cb2 = jest.fn(
-        res => new Promise<void>((resolve, rej) => (res ? resolve() : rej()))
+      const cb1 = vi.fn(res => res);
+      const cb2 = vi.fn(
+        res => new Promise<void>((resolve, rej) => (res ? resolve() : rej())),
       );
       const suite = vest.create((key, res) => {
         vestTest.memo('f1', () => cb1(res), [1, key]);

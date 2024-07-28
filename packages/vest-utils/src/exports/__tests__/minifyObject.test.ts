@@ -1,4 +1,5 @@
 import { expandObject, minifyObject } from 'minifyObject';
+import { describe, it, expect } from 'vitest';
 
 describe('minifyObject', () => {
   it('should be a function', () => {

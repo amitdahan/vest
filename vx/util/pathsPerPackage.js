@@ -40,6 +40,7 @@ findDuplicates();
 module.exports = {
   packages: groupedMatches,
   list,
+  genPathsPerPackage,
 };
 
 function findDuplicates() {
@@ -65,11 +66,11 @@ function findDuplicates() {
   const duplicatesPerPackage = [];
 
   for (const [packageName, { duplicates }] of Object.entries(
-    duplicatesContainer
+    duplicatesContainer,
   )) {
     if (duplicates.size > 0) {
       duplicatesPerPackage.push(
-        `${packageName}: ${[...duplicates].map(dup => `\n   -${dup}`).join('')}`
+        `${packageName}: ${[...duplicates].map(dup => `\n   -${dup}`).join('')}`,
       );
     }
   }
@@ -77,8 +78,23 @@ function findDuplicates() {
   if (duplicatesPerPackage.length > 0) {
     throw new Error(
       `VX: Duplicates found in the following packages:\n\n${duplicatesPerPackage.join(
-        '\n'
-      )}\n`
+        '\n',
+      )}\n`,
     );
   }
+}
+
+function genPathsPerPackage(packageName, { addPathToArray = false }) {
+  const packageData = groupedMatches[packageName];
+
+  return packageData.reduce((paths, currentModule) => {
+    const filePath = vxPath.rel(
+      currentModule.absolute,
+      vxPath.package(packageName),
+    );
+
+    return Object.assign(paths, {
+      [currentModule.name]: addPathToArray ? [filePath] : filePath,
+    });
+  }, {});
 }

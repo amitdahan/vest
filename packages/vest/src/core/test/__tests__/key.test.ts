@@ -1,12 +1,24 @@
-import { TDeferThrow } from 'vest-utils/src/deferThrow';
-
-import { TVestMock } from '../../../testUtils/TVestMock';
-import mockThrowError from '../../../testUtils/mockThrowError';
+import { deferThrow } from 'vest-utils';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 
 import { TIsolateTest } from 'IsolateTest';
 import * as vest from 'vest';
 
 describe('key', () => {
+  beforeEach(() => {
+    vi.mock('vest-utils', async () => {
+      const vu = await vi.importActual('vest-utils');
+      return {
+        ...vu,
+        deferThrow: vi.fn(),
+      };
+    });
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   describe('When key is provided', () => {
     describe('When tests change their order between runs', () => {
       it('Should retain test results', () => {
@@ -77,13 +89,8 @@ describe('key', () => {
     });
 
     describe('When tests without a key reorder get added above a test with a key', () => {
-      let vest: TVestMock;
-      beforeEach(() => {
-        vest = mockThrowError().vest;
-      });
       afterEach(() => {
-        jest.resetModules();
-        jest.resetAllMocks();
+        vi.resetModules();
       });
       it('Should retain keyd tests', () => {
         const calls: TIsolateTest[][] = [];
@@ -107,6 +114,8 @@ describe('key', () => {
 
         const res1 = suite();
         const res2 = suite();
+
+        expect(deferThrow).toHaveBeenCalled();
 
         expect(calls[0][0]).toBe(calls[1][0]);
         expect(calls[0][1]).toBe(calls[1][1]);
@@ -199,28 +208,18 @@ describe('key', () => {
     });
 
     describe('When the same key is encountered twice', () => {
-      let deferThrow: TDeferThrow, vest: TVestMock;
-      beforeEach(() => {
-        const mock = mockThrowError();
-
-        deferThrow = mock.deferThrow;
-        vest = mock.vest;
-      });
-
-      afterEach(() => {
-        jest.resetAllMocks();
-        jest.resetModules();
-      });
-
-      it('Should throw a deferred error', () => {
+      it('Should throw a deferred error', async () => {
         const suite = vest.create(() => {
           vest.test('field1', () => false, 'key_1');
           vest.test('field2', () => false, 'key_1');
         });
+
         suite();
         expect(deferThrow).toHaveBeenCalledWith(
           `Encountered the same key "key_1" twice. This may lead to inconsistent or overriding of results.`,
         );
+
+        vi.resetAllMocks();
       });
     });
   });

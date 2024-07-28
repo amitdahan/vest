@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { isNegative } from 'isNegative';
 
 describe('Tests isNegative rule', () => {

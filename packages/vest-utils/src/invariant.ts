@@ -4,7 +4,7 @@ import type { Stringable } from 'utilityTypes';
 export default function invariant(
   condition: any,
   // eslint-disable-next-line @typescript-eslint/ban-types
-  message?: String | Stringable
+  message?: String | Stringable,
 ): asserts condition {
   if (condition) {
     return;

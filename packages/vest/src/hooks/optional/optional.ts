@@ -9,7 +9,7 @@ import { TFieldName } from 'SuiteResultTypes';
 
 // @vx-allow use-use
 export function optional<F extends TFieldName>(
-  optionals: OptionalsInput<F>
+  optionals: OptionalsInput<F>,
 ): void {
   const suiteRoot = VestRuntime.useAvailableRoot<TIsolateSuite>();
 

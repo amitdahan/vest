@@ -1,4 +1,5 @@
 import isBoolean from 'isBooleanValue';
+import { describe, it, expect } from 'vitest';
 
 describe('isBoolean', () => {
   it('Should pass for a boolean value', () => {

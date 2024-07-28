@@ -1,14 +1,15 @@
+import { describe, it, expect, vi } from 'vitest';
 import wait from 'wait';
 
 import { TestFnPayload } from 'TestTypes';
+import debounce from 'debounce';
 import * as vest from 'vest';
-import debounce from 'vest/debounce';
 
 describe('debounce', () => {
   describe('Sync test', () => {
     describe('Returning false', () => {
       it('Should debounce test function calls when used', () => {
-        const test = jest.fn(() => {
+        const test = vi.fn(() => {
           return false;
         });
 
@@ -34,7 +35,7 @@ describe('debounce', () => {
 
     describe('Throwing an error', () => {
       it('Should debounce test function calls when used', () => {
-        const test = jest.fn(() => {
+        const test = vi.fn(() => {
           throw new Error();
         });
 
@@ -61,7 +62,7 @@ describe('debounce', () => {
 
   describe('Async test', () => {
     it('Should complete the async test after the delay', async () => {
-      const t = jest.fn(async () => {
+      const t = vi.fn(async () => {
         await wait(1000);
         vest.enforce(1).equals(2);
       });
@@ -85,7 +86,7 @@ describe('debounce', () => {
 
   describe('When delay met multiple times', () => {
     it('Should call once per completed delay', async () => {
-      const test = jest.fn(() => {
+      const test = vi.fn(() => {
         return false;
       });
 
@@ -116,7 +117,7 @@ describe('debounce', () => {
 
   describe('Debounced tests with non-debounced tests', () => {
     it('Should complete non-debounced tests immediately', () => {
-      const test = jest.fn(() => {
+      const test = vi.fn(() => {
         return false;
       });
 
@@ -141,7 +142,7 @@ describe('debounce', () => {
 
   describe('Multiple debounced fields', () => {
     it('Should conclude them on their own time', () => {
-      const t = jest.fn(() => {
+      const t = vi.fn(() => {
         return false;
       });
 
@@ -151,7 +152,7 @@ describe('debounce', () => {
         vest.test('test3', 'message', debounce(t, 2000));
       });
 
-      const control = jest.fn();
+      const control = vi.fn();
 
       return new Promise<void>(done => {
         suite();
@@ -196,10 +197,10 @@ describe('debounce', () => {
   describe('Test payload', () => {
     describe('AbortSignal', () => {
       it('Should abort the test when signal is aborted', async () => {
-        const control = jest.fn();
+        const control = vi.fn();
 
         let run = 0;
-        const test = jest.fn(async (payload: TestFnPayload) => {
+        const test = vi.fn(async (payload: TestFnPayload) => {
           expect(payload.signal.aborted).toBe(false);
           await wait(50);
           // We should only abort on the first run because

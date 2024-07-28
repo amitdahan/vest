@@ -1,4 +1,5 @@
 import { CB } from 'vest-utils';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { TIsolate, Isolate } from 'Isolate';
 import { StateRefType, useAvailableRoot } from 'VestRuntime';
@@ -25,7 +26,7 @@ describe('Isolate', () => {
     });
 
     it('Should run the passed callback', () => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       withRunTime(() => {
         Isolate.create(IsolateType.Isolate, spy);
       });
@@ -39,7 +40,7 @@ describe('Isolate', () => {
           () => {
             return 'foo';
           },
-          {}
+          {},
         );
       });
       expect(isolate.output).toBe('foo');
@@ -108,7 +109,7 @@ describe('Isolate', () => {
       const isolate = withRunTime(() => {
         return Isolate.create(IsolateType.Isolate, () => {});
       });
-      const spy = jest.spyOn(isolate.abortController, 'abort');
+      const spy = vi.spyOn(isolate.abortController, 'abort');
       IsolateMutator.abort(isolate, 'foo');
       expect(spy).toHaveBeenCalledWith('foo');
     });

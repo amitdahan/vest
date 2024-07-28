@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { endsWith } from 'endsWith';
 
 describe('Tests isArray rule', () => {
@@ -9,7 +11,7 @@ describe('Tests isArray rule', () => {
 
   it('Should return true for a suffix', () => {
     expect(endsWith(word, word.substring(word.length / 2, word.length))).toBe(
-      true
+      true,
     );
   });
 

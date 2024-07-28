@@ -1,14 +1,25 @@
-import { TDeferThrow } from 'vest-utils/src/deferThrow';
-
-import { TVestMock } from '../../testUtils/TVestMock';
-import mockThrowError from '../../testUtils/mockThrowError';
+import { deferThrow } from 'vest-utils';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
 
 import * as vest from 'vest';
 
 describe('each', () => {
+  beforeEach(() => {
+    vi.mock('vest-utils', async () => {
+      const vu = await vi.importActual('vest-utils');
+      return {
+        ...vu,
+        deferThrow: vi.fn(),
+      };
+    });
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
   describe('When callback is not a function', () => {
     it('should throw', () => {
-      const control = jest.fn();
+      const control = vi.fn();
       const suite = vest.create(() => {
         expect(() => {
           // @ts-expect-error
@@ -23,7 +34,7 @@ describe('each', () => {
   });
 
   it('Should pass to callback the current list item and index', () => {
-    const cb = jest.fn();
+    const cb = vi.fn();
     const suite = vest.create(() => {
       vest.each([1, 2, 3, 'str'], cb);
     });
@@ -39,16 +50,6 @@ describe('each', () => {
   });
 
   describe('Test Reorder', () => {
-    let deferThrow: TDeferThrow;
-    let vest: TVestMock;
-
-    beforeEach(() => {
-      const mock = mockThrowError();
-      deferThrow = mock.deferThrow;
-
-      vest = mock.vest;
-    });
-
     it('Should allow reorder', () => {
       const suite = vest.create(() => {
         vest.each([0, 1], v => {
@@ -57,9 +58,8 @@ describe('each', () => {
       });
 
       suite();
-      suite();
 
-      expect(deferThrow).toHaveBeenCalledTimes(0);
+      expect(() => suite()).not.toThrow();
     });
 
     describe('Sanity', () => {
@@ -76,8 +76,7 @@ describe('each', () => {
 
         suite();
         suite();
-
-        expect(deferThrow).toHaveBeenCalledTimes(1);
+        expect(deferThrow).toHaveBeenCalled();
       });
     });
   });

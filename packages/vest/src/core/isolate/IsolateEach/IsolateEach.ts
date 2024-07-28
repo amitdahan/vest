@@ -6,7 +6,7 @@ import { VestIsolateType } from 'VestIsolateType';
 type TIsolateEach = TIsolate;
 
 export function IsolateEach<Callback extends CB = CB>(
-  callback: Callback
+  callback: Callback,
 ): TIsolateEach {
   return Isolate.create(VestIsolateType.Each, callback, {
     allowReorder: true,

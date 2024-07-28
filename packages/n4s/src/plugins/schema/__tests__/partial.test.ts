@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { enforce } from 'enforce';
 import * as ruleReturn from 'ruleReturn';
 import { partial } from 'schema';
@@ -11,7 +13,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
 
       partial({});
@@ -21,7 +23,7 @@ describe('partial', () => {
         rules.run({
           username: null,
           id: null,
-        })
+        }),
       ).toEqual(ruleReturn.passing());
     });
 
@@ -30,11 +32,11 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
 
       expect(rules.run({ username: 'foobar', id: 1 })).toEqual(
-        ruleReturn.passing()
+        ruleReturn.passing(),
       );
     });
 
@@ -43,7 +45,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
 
       expect(rules.run({ username: 'foobar' })).toEqual(ruleReturn.passing());
@@ -54,11 +56,11 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
 
       expect(rules.run({ username: 'foo', id: '1' })).toEqual(
-        ruleReturn.failing()
+        ruleReturn.failing(),
       );
     });
   });
@@ -69,7 +71,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
 
       enforce({
@@ -79,7 +81,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
     });
 
@@ -88,7 +90,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
     });
 
@@ -97,7 +99,7 @@ describe('partial', () => {
         partial({
           username: enforce.isString().longerThan(3),
           id: enforce.isNumeric(),
-        })
+        }),
       );
     });
 
@@ -107,8 +109,8 @@ describe('partial', () => {
           partial({
             username: enforce.isString().longerThan(3),
             id: enforce.isNumeric(),
-          })
-        )
+          }),
+        ),
       ).toThrow();
     });
   });
@@ -120,9 +122,9 @@ describe('partial', () => {
           partial({
             username: enforce.isString().longerThan(3),
             id: enforce.isNumeric(),
-          })
+          }),
         )
-        .run({ username: 'foobar', id: '1', foo: 'bar' })
+        .run({ username: 'foobar', id: '1', foo: 'bar' }),
     ).toEqual(ruleReturn.failing());
 
     expect(
@@ -131,9 +133,9 @@ describe('partial', () => {
           partial({
             username: enforce.isString().longerThan(3),
             id: enforce.isNumeric(),
-          })
+          }),
         )
-        .run({ username: 'foobar', id: '1', foo: 'bar' })
+        .run({ username: 'foobar', id: '1', foo: 'bar' }),
     ).toEqual(ruleReturn.passing());
   });
 });

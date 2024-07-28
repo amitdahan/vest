@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { enforce } from 'enforce';
 import { isKeyOf, isNotKeyOf } from 'isKeyOf';
 
@@ -38,7 +40,7 @@ describe('Tests isKeyOf rule', () => {
       'Should throw when %s is an object',
       v => {
         expect(() => enforce(DUMMY_KEY).isKeyOf({ v })).toThrow();
-      }
+      },
     );
   });
 });

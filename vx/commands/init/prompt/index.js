@@ -68,6 +68,7 @@ function scaffold(config) {
   const template = path.resolve(vxPath.VX_COMMANDS_PATH, 'init/template');
   const packagePath = vxPath.package(config.name);
   fsExtra.copySync(path.join(template), packagePath);
+  removeTemplateExtensionFromFile(packagePath, config.name);
 
   writeEntryPoint(packagePath, config.name);
   updateValues(packagePath, config);
@@ -81,7 +82,7 @@ function writeEntryPoint(packagePath, packageName) {
   fsExtra.writeFileSync(
     vxPath.packageSrc(packageName, `${packageName}.ts`),
     `export const main = () => "${packageName}";`,
-    'utf8'
+    'utf8',
   );
 }
 
@@ -93,12 +94,18 @@ function updateValues(packagePath, config) {
       Object.keys(configMapping).forEach(key => {
         content = content.replace(
           new RegExp(`{{${key}}}`, 'g'),
-          config[configMapping[key]] ?? configMapping[key]
+          config[configMapping[key]] ?? configMapping[key],
         );
       });
 
       fsExtra.writeFileSync(file, content, 'utf8');
     }
+  });
+}
+
+function removeTemplateExtensionFromFile(packagePath, packageName) {
+  glob.sync(packagePath + '/**/*.tmpl').forEach(file => {
+    fsExtra.moveSync(file, file.replace('.tmpl', ''));
   });
 }
 

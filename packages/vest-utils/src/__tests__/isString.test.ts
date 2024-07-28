@@ -1,4 +1,5 @@
 import isStringValue from 'isStringValue';
+import { describe, it, expect } from 'vitest';
 
 describe('Tests isString rule', () => {
   it('Should return false for non-string values', () => {

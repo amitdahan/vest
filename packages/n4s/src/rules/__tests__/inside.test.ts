@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { inside } from 'inside';
 
 describe('Inside rule', () => {
@@ -9,7 +11,7 @@ describe('Inside rule', () => {
 
   it('Should fail to find a string inside an array in which it does not exist', () => {
     expect(inside('going to', ["I'm", 'gonna', 'pop', 'some', 'tags'])).toBe(
-      false
+      false,
     );
   });
 
@@ -35,7 +37,7 @@ describe('Inside rule', () => {
 
   it('Should fail to find array elements in another array in which they do not exist', () => {
     expect(inside(['no', 'treble'], ['all', 'about', 'the', 'bass'])).toBe(
-      false
+      false,
     );
   });
 

@@ -1,4 +1,5 @@
 import { startsWith } from 'startsWith';
+import { describe, it, expect } from 'vitest';
 
 describe('Tests isArray rule', () => {
   const word = 'meow';

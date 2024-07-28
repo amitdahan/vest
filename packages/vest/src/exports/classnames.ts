@@ -8,7 +8,7 @@ import { ParsedVestObject, parse } from 'parser';
  */
 export default function classnames<F extends TFieldName, G extends TGroupName>(
   res: SuiteSummary<F, G>,
-  classes: SupportedClasses = {}
+  classes: SupportedClasses = {},
 ): (fieldName: F) => string {
   const selectors = parse(res);
 

@@ -1,10 +1,11 @@
 import callEach from 'callEach';
+import { describe, it, expect, vi } from 'vitest';
 
 describe('callEach', () => {
   it('should call all functions in the array', () => {
-    const mockFn1 = jest.fn();
-    const mockFn2 = jest.fn();
-    const mockFn3 = jest.fn();
+    const mockFn1 = vi.fn();
+    const mockFn2 = vi.fn();
+    const mockFn3 = vi.fn();
 
     callEach([mockFn1, mockFn2, mockFn3]);
 

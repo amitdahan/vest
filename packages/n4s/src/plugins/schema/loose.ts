@@ -7,14 +7,14 @@ import type { ShapeObject } from 'schemaTypes';
 
 export function loose(
   inputObject: Record<string, any>,
-  shapeObject: ShapeObject
+  shapeObject: ShapeObject,
 ): RuleDetailedResult {
   for (const key in shapeObject) {
     const currentValue = inputObject[key];
     const currentRule = shapeObject[key];
 
     const res = ctx.run({ value: currentValue, set: true, meta: { key } }, () =>
-      runLazyRule(currentRule, currentValue)
+      runLazyRule(currentRule, currentValue),
     );
 
     if (!res.pass) {

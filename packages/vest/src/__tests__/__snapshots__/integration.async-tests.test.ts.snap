@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Stateful behavior Should have all fields 1`] = `
+exports[`Stateful behavior > Should have all fields 1`] = `
 {
   "field_1": SummaryBase {
     "errorCount": 1,

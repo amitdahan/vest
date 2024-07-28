@@ -18,7 +18,7 @@ function buildPackage(options = {}) {
   const format = [];
 
   if (options.fastBuild) {
-    format.push(opts.format.CJS);
+    format.push(opts.format.ES);
   }
 
   const baseOptions = {

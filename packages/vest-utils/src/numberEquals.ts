@@ -3,7 +3,7 @@ import { isNumeric } from 'isNumeric';
 
 export function numberEquals(
   value: string | number,
-  eq: string | number
+  eq: string | number,
 ): boolean {
   return isNumeric(value) && isNumeric(eq) && Number(value) === Number(eq);
 }

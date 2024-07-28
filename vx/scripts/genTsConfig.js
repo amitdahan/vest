@@ -6,7 +6,7 @@ const lodash = require('lodash');
 const exec = require('vx/exec');
 const logger = require('vx/logger');
 const packageNames = require('vx/packageNames');
-const pathsPerPackage = require('vx/util/pathsPerPackage');
+const { genPathsPerPackage } = require('vx/util/pathsPerPackage');
 const vxPath = require('vx/vxPath');
 
 module.exports = function genTsConfig() {
@@ -20,14 +20,14 @@ module.exports = function genTsConfig() {
   }
 
   packageNames.list.forEach(packageName => {
-    const paths = genPathsPerPackage(packageName);
+    const paths = genPathsPerPackage(packageName, { addPathToArray: true });
     const tsConfig = packageTsConfigTemplate(paths, packageName);
 
     const tsConfigPath = vxPath.packageTsConfig(packageName);
 
     if (isConfigEqual(tsConfigPath, tsConfig)) {
       logger.log(
-        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`
+        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`,
       );
       return;
     }
@@ -95,19 +95,7 @@ function rootTsConfigTemplate() {
       strict: true,
       target: 'ES2015',
     },
-    files: [`${vxPath.rel(vxPath.JEST_CONFIG_PATH)}/globals.d.ts`],
+    files: [`${vxPath.rel(vxPath.VITEST_CONFIG_PATH)}/vitest.d.ts`],
     include: [vxPath.rel(vxPath.packageSrc('*', '**/*.ts'))],
   };
-}
-
-function genPathsPerPackage(packageName) {
-  const packageData = pathsPerPackage.packages[packageName];
-
-  return packageData.reduce((paths, currentModule) => {
-    return Object.assign(paths, {
-      [currentModule.name]: [
-        vxPath.rel(currentModule.absolute, vxPath.package(packageName)),
-      ],
-    });
-  }, {});
 }

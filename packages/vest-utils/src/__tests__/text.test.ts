@@ -1,14 +1,15 @@
 import { text } from 'text';
+import { describe, it, expect } from 'vitest';
 
 describe('text', () => {
   describe('named substitutions (object)', () => {
     describe('When all substitutions exist', () => {
       it('Should replace delimited placeholders', () => {
         expect(text('this {t} an example', { t: 'was' })).toBe(
-          'this was an example'
+          'this was an example',
         );
         expect(text('this {t1} {t2} example', { t1: 'was', t2: 'one' })).toBe(
-          'this was one example'
+          'this was one example',
         );
       });
     });

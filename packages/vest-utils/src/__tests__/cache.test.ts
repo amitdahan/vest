@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { cache } from 'vest-utils';
 
@@ -18,7 +19,7 @@ describe('lib: cache', () => {
 
   describe('on cache miss', () => {
     it('Should call passed cache action function and return its value', () => {
-      const cacheAction = jest.fn(() => ({}));
+      const cacheAction = vi.fn(() => ({}));
       const res = c([{}], cacheAction);
       expect(cacheAction).toHaveBeenCalledTimes(1);
       expect(res).toBe(cacheAction.mock.results[0].value);
@@ -27,7 +28,7 @@ describe('lib: cache', () => {
 
   describe('On cache hit', () => {
     it('Should return cached result', () => {
-      const cacheAction = jest.fn(() => {
+      const cacheAction = vi.fn(() => {
         Math.random();
       });
       const depsArray = [true, false, {}];
@@ -38,7 +39,7 @@ describe('lib: cache', () => {
     });
 
     it('Should return without calling the cache action', () => {
-      const cacheAction = jest.fn();
+      const cacheAction = vi.fn();
       const depsArray = [Math.random()];
       c(depsArray, cacheAction);
       expect(cacheAction).toHaveBeenCalledTimes(1);
@@ -59,7 +60,7 @@ describe('lib: cache', () => {
       Array.from({ length: callCount }, (_, i) => {
         const c = cache(/*maxSize*/ cacheSize);
         const results = Array.from({ length: callCount }, (_, j) =>
-          c([j], Math.random)
+          c([j], Math.random),
         );
 
         if (i < diff) {
@@ -74,7 +75,7 @@ describe('lib: cache', () => {
   });
   it('Should take into account the deps array in its entirety', () => {
     const deps = Array.from({ length: 100 }, () =>
-      _.sample([{}, false, Math.random(), true, () => null])
+      _.sample([{}, false, Math.random(), true, () => null]),
     );
     const c = cache();
     const res = c([...deps], Math.random);

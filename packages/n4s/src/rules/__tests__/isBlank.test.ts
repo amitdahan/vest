@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { isBlank, isNotBlank } from 'isBlank';
 
 describe('isBlank', () => {

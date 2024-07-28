@@ -9,7 +9,7 @@ import {
 } from 'SuiteResultTypes';
 
 function promisify<F extends TFieldName, G extends TGroupName>(
-  validatorFn: (...args: any[]) => SuiteRunResult<F, G>
+  validatorFn: (...args: any[]) => SuiteRunResult<F, G>,
 ) {
   return (...args: any[]): Promise<SuiteResult<F, G>> => {
     invariant(isFunction(validatorFn), ErrorStrings.PROMISIFY_REQUIRE_FUNCTION);

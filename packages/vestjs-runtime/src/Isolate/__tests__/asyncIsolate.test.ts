@@ -1,9 +1,10 @@
-import { CB } from 'vest-utils';
-import wait from 'wait';
-
 import { useBus } from 'Bus';
 import { Isolate, TIsolate } from 'Isolate';
 import { RuntimeEvents } from 'RuntimeEvents';
+import { CB } from 'vest-utils';
+import { describe, vi, it, expect, test } from 'vitest';
+import wait from 'wait';
+
 import { VestRuntime } from 'vestjs-runtime';
 
 describe('AsyncIsolate', () => {
@@ -32,15 +33,15 @@ describe('AsyncIsolate', () => {
       expect(root?.children?.[0].parent).toBe(root);
       expect(root?.children?.[0]?.children?.[0]?.$type).toBe('UGrandChild_1');
       expect(root?.children?.[0]?.children?.[0].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root?.children?.[0]?.children?.[1]?.$type).toBe('UGrandChild_2');
       expect(root?.children?.[0]?.children?.[1].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root?.children?.[0]?.children?.[2]?.$type).toBe('UGrandChild_3');
       expect(root?.children?.[0]?.children?.[2].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root).toMatchSnapshot();
 
@@ -49,7 +50,7 @@ describe('AsyncIsolate', () => {
   });
 
   it('Should emit an event when an async isolate is done running', () => {
-    const cb = jest.fn();
+    const cb = vi.fn();
     return new Promise<void>(async done => {
       let child = {} as TIsolate;
       withRunTime(() => {
@@ -88,6 +89,6 @@ async function genChildren() {
       Isolate.create('UGrandChild_1', () => {});
       Isolate.create('UGrandChild_2', () => {});
       Isolate.create('UGrandChild_3', () => {});
-    })
+    }),
   );
 }

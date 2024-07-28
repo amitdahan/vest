@@ -13,7 +13,6 @@
       "testDummy": ["./src/testUtils/testDummy.ts"],
       "suiteDummy": ["./src/testUtils/suiteDummy.ts"],
       "partition": ["./src/testUtils/partition.ts"],
-      "mockThrowError": ["./src/testUtils/mockThrowError.ts"],
       "TVestMock": ["./src/testUtils/TVestMock.ts"],
       "suiteRunResult": ["./src/suiteResult/suiteRunResult.ts"],
       "suiteResult": ["./src/suiteResult/suiteResult.ts"],

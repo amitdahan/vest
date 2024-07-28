@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { isNumber } from 'isNumber';
 
 describe('Tests isNumber rule', () => {

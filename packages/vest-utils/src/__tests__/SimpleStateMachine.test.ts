@@ -1,4 +1,5 @@
 import { StateMachine } from 'SimpleStateMachine';
+import { describe, test, it, expect } from 'vitest';
 
 describe('SimpleStateMachine', () => {
   test('sample', () => {

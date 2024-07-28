@@ -1,4 +1,6 @@
 import { SuiteSerializer } from 'SuiteSerializer';
+import { describe, it, expect } from 'vitest';
+
 import * as vest from 'vest';
 
 describe('SuiteSerializer', () => {

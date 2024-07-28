@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { invariant } from 'vest-utils';
 
 describe('invariant', () => {

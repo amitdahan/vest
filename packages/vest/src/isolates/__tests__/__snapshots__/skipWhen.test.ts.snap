@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`skipWhen Should pass result draft to the functional condition 1`] = `
+exports[`skipWhen > Should pass result draft to the functional condition 1`] = `
 SuiteSummary {
   "errorCount": 0,
   "errors": [],
@@ -30,7 +30,7 @@ SuiteSummary {
 }
 `;
 
-exports[`skipWhen Should pass result draft to the functional condition 2`] = `
+exports[`skipWhen > Should pass result draft to the functional condition 2`] = `
 SuiteSummary {
   "errorCount": 1,
   "errors": [
@@ -78,7 +78,7 @@ SuiteSummary {
 }
 `;
 
-exports[`skipWhen Should pass result draft to the functional condition 3`] = `
+exports[`skipWhen > Should pass result draft to the functional condition 3`] = `
 SuiteSummary {
   "errorCount": 2,
   "errors": [

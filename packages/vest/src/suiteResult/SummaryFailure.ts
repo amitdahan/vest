@@ -9,11 +9,11 @@ export class SummaryFailure<F extends TFieldName, G extends TGroupName>
   constructor(
     public fieldName: F,
     public message: string | undefined,
-    public groupName: G | undefined
+    public groupName: G | undefined,
   ) {}
 
   static fromTestObject<F extends TFieldName, G extends TGroupName>(
-    testObject: TIsolateTest<F, G>
+    testObject: TIsolateTest<F, G>,
   ) {
     const { fieldName, message, groupName } = VestTest.getData(testObject);
 

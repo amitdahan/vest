@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker';
-
 import { ErrorStrings } from 'ErrorStrings';
 import { VestTest } from 'VestTest';
+import { describe, it, expect, vi } from 'vitest';
+
 import * as vest from 'vest';
 
 const { create, test, warn } = vest;
@@ -22,7 +23,7 @@ describe('warn hook', () => {
 
   describe('Error handling', () => {
     it('Should throw error when currentTest is not present', () => {
-      const done = jest.fn();
+      const done = vi.fn();
       create(() => {
         expect(warn).toThrow(ErrorStrings.WARN_MUST_BE_CALLED_FROM_TEST);
         done();

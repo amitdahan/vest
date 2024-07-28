@@ -1,10 +1,10 @@
 import { faker } from '@faker-js/faker';
-
 import { TIsolateTest } from 'IsolateTest';
 import { Severity } from 'Severity';
 import { VestTest } from 'VestTest';
 import { hasFailuresByTestObject } from 'hasFailuresByTestObjects';
 import { mockIsolateTest } from 'vestMocks';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 const fieldName: string = faker.lorem.word();
 

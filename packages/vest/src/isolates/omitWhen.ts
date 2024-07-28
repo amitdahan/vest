@@ -20,7 +20,7 @@ import { useCreateSuiteResult } from 'suiteResult';
 // @vx-allow use-use
 export function omitWhen<F extends TFieldName, G extends TGroupName>(
   conditional: TDraftCondition<F, G>,
-  callback: CB
+  callback: CB,
 ): void {
   Isolate.create(VestIsolateType.OmitWhen, () => {
     SuiteContext.run(
@@ -29,10 +29,10 @@ export function omitWhen<F extends TFieldName, G extends TGroupName>(
           useWithinActiveOmitWhen() ||
           optionalFunctionValue(
             conditional,
-            optionalFunctionValue(useCreateSuiteResult)
+            optionalFunctionValue(useCreateSuiteResult),
           ),
       },
-      callback
+      callback,
     );
   });
 }

@@ -9,16 +9,16 @@ import { VestIsolateType } from 'VestIsolateType';
 
 export type TIsolateTest<
   F extends TFieldName = TFieldName,
-  G extends TGroupName = TGroupName
+  G extends TGroupName = TGroupName,
 > = TIsolate<CommonTestFields<F, G> & IsolateTestPayload>;
 
 export function IsolateTest<
   F extends TFieldName = TFieldName,
-  G extends TGroupName = TGroupName
+  G extends TGroupName = TGroupName,
 >(
   callback: CB,
   input: CommonTestFields<F, G>,
-  key?: IsolateKey
+  key?: IsolateKey,
 ): TIsolateTest<F, G> {
   const payload: IsolateTestPayload = {
     ...IsolateTestBase(),
@@ -37,7 +37,7 @@ export function IsolateTest<
     VestIsolateType.Test,
     callback,
     payload,
-    key ?? null
+    key ?? null,
   );
 
   return isolate as TIsolateTest<F, G>;
@@ -52,7 +52,7 @@ export function IsolateTestBase() {
 
 export type IsolateTestPayload<
   F extends TFieldName = TFieldName,
-  G extends TGroupName = TGroupName
+  G extends TGroupName = TGroupName,
 > = CommonTestFields<F, G> & {
   severity: TestSeverity;
   status: TestStatus;
@@ -61,7 +61,7 @@ export type IsolateTestPayload<
 
 type CommonTestFields<
   F extends TFieldName = TFieldName,
-  G extends TGroupName = TGroupName
+  G extends TGroupName = TGroupName,
 > = {
   message?: Maybe<string>;
   groupName?: G;

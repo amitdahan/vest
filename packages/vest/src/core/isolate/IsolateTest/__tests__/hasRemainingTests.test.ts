@@ -1,6 +1,7 @@
+import { SuiteWalker } from 'SuiteWalker';
+import { describe, it, expect, beforeEach } from 'vitest';
 import wait from 'wait';
 
-import { SuiteWalker } from 'SuiteWalker';
 import * as vest from 'vest';
 
 describe('SuiteWalker.useHasRemainingWithTestNameMatching', () => {

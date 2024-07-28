@@ -1,6 +1,8 @@
+import { Modes } from 'Modes';
+import { describe, it, expect } from 'vitest';
+
 import { dummyTest } from '../../../testUtils/testDummy';
 
-import { Modes } from 'Modes';
 import * as vest from 'vest';
 
 describe('->getFailures', () => {

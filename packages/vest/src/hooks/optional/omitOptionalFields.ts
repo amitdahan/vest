@@ -63,7 +63,7 @@ export function useOmitOptionalFields(): void {
     // Ge the optional configuration for the given field
     const optionalConfig = SuiteOptionalFields.getOptionalField(
       root,
-      fieldName
+      fieldName,
     );
 
     // If the optional was set to a function or a boolean, run it and verify/omit the test

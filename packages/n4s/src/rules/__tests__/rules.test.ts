@@ -1,4 +1,5 @@
 import rules from 'rules';
+import { describe, it, expect } from 'vitest';
 
 describe('Tests enforce rules API', () => {
   it('Should expose all enforce rules', () => {

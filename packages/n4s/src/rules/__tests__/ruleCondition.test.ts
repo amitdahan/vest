@@ -1,9 +1,11 @@
+import { describe, it, expect, vi } from 'vitest';
+
 import { enforce } from 'n4s';
 import ruleReturn, { failing, passing } from 'ruleReturn';
 
 describe('enforce.condition', () => {
   it('Should pass down enforced value to condition as the first argument', () => {
-    const condition = jest.fn(() => true);
+    const condition = vi.fn(() => true);
 
     enforce(1).condition(condition);
     expect(condition).toHaveBeenCalledWith(1);
@@ -17,7 +19,7 @@ describe('enforce.condition', () => {
       expect(enforce.condition(() => false).run(1)).toEqual(failing());
       expect(enforce.condition(() => failing()).run(1)).toEqual(failing());
       expect(
-        enforce.condition(() => ruleReturn(false, 'failure message')).run(1)
+        enforce.condition(() => ruleReturn(false, 'failure message')).run(1),
       ).toEqual(ruleReturn(false, 'failure message'));
     });
 
@@ -25,7 +27,7 @@ describe('enforce.condition', () => {
       expect(enforce.condition(() => true).run(1)).toEqual(passing());
       expect(enforce.condition(() => passing()).run(1)).toEqual(passing());
       expect(
-        enforce.condition(() => ruleReturn(true, 'success message')).run(1)
+        enforce.condition(() => ruleReturn(true, 'success message')).run(1),
       ).toEqual(passing());
     });
   });
@@ -37,7 +39,7 @@ describe('enforce.condition', () => {
       expect(() => enforce(1).condition(() => failing())).toThrow();
 
       expect(() =>
-        enforce(1).condition(() => ruleReturn(false, 'failure message'))
+        enforce(1).condition(() => ruleReturn(false, 'failure message')),
       ).toThrow();
     });
 
@@ -47,7 +49,7 @@ describe('enforce.condition', () => {
       expect(() => enforce(1).condition(() => passing())).not.toThrow();
 
       expect(() =>
-        enforce(1).condition(() => ruleReturn(true, 'success message'))
+        enforce(1).condition(() => ruleReturn(true, 'success message')),
       ).not.toThrow();
     });
   });

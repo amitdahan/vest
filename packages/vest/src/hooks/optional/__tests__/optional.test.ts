@@ -1,10 +1,11 @@
 import { TTestSuite } from 'testUtils/TVestMock';
 import { BlankValue } from 'vest-utils';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import wait from 'wait';
 
 import * as vest from 'vest';
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 
 describe('optional hook', () => {
   describe('Auto Optional Interface', () => {
@@ -126,7 +127,7 @@ describe('optional hook', () => {
       });
 
       it('Should run the test but omit anyway', () => {
-        const fn = jest.fn(() => false);
+        const fn = vi.fn(() => false);
         const suite = vest.create(() => {
           vest.optional({
             f1: () => true,
@@ -201,7 +202,7 @@ describe('optional hook', () => {
         });
 
         it('Should avoid running the test to begin with', () => {
-          const fn = jest.fn();
+          const fn = vi.fn();
           const suite = vest.create(() => {
             vest.optional({
               field_1: true,
@@ -250,7 +251,7 @@ describe('optional hook', () => {
             expect(res.hasErrors('field_1')).toBe(false);
             expect(res.isValid('field_1')).toBe(true);
             expect(res.isValid()).toBe(true);
-          }
+          },
         );
       });
 
@@ -394,7 +395,7 @@ describe('optional hook', () => {
       describe('After the test completed', () => {
         it('Should be considered as non-valid', () => {
           const res = suite();
-          jest.runAllTimers();
+          vi.runAllTimers();
           expect(res.isValid()).toBe(false);
           expect(res.isValid('field_1')).toBe(false);
         });
@@ -425,7 +426,7 @@ describe('optional hook', () => {
       describe('After the test completed', () => {
         it('Should be considered as valid', async () => {
           suite();
-          await jest.runAllTimersAsync();
+          await vi.runAllTimersAsync();
           expect(suite.isValid()).toBe(true);
           expect(suite.isValid('field_1')).toBe(true);
         });
@@ -463,7 +464,7 @@ describe('optional hook', () => {
     describe('After the test completed', () => {
       it('Should be considered as valid', async () => {
         suite();
-        await jest.runAllTimersAsync();
+        await vi.runAllTimersAsync();
         expect(suite.isValid('field_2')).toBe(true);
         expect(suite.isValid()).toBe(true);
         expect(suite.isValid('field_1')).toBe(true);

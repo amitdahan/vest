@@ -1,3 +1,5 @@
+import { describe, it, expect, afterEach } from 'vitest';
+
 import enforceEager from 'enforceEager';
 
 describe(`enforce eager`, () => {

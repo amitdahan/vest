@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { isEmpty } from 'vest-utils';
 
 describe('Tests isEmpty rule', () => {

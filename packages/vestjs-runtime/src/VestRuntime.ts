@@ -76,7 +76,7 @@ export function useXAppData<T = object>() {
 
 export function createRef(
   Reconciler: IRecociler,
-  setter: DynamicValue<Record<string, any>>
+  setter: DynamicValue<Record<string, any>>,
 ): StateRefType {
   return Object.freeze({
     Bus: bus.createBus(),

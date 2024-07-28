@@ -1,5 +1,6 @@
 import { TIsolate } from 'Isolate';
 import { IsolateMutator } from 'IsolateMutator';
+import { describe, it, expect, vi } from 'vitest';
 
 describe('IsolateMutator', () => {
   describe('setParent', () => {
@@ -121,7 +122,7 @@ describe('IsolateMutator', () => {
   describe('abort', () => {
     it('Should abort the controller', () => {
       const isolate = {
-        abortController: { abort: jest.fn() },
+        abortController: { abort: vi.fn() },
       } as unknown as TIsolate;
 
       expect(isolate.abortController.abort).not.toHaveBeenCalled();
@@ -141,7 +142,7 @@ describe('IsolateMutator', () => {
 
     it('Should abort the controller with the passed reason', () => {
       const isolate = {
-        abortController: { abort: jest.fn() },
+        abortController: { abort: vi.fn() },
       } as unknown as TIsolate;
 
       expect(isolate.abortController.abort).not.toHaveBeenCalled();

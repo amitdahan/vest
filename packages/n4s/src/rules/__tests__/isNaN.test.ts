@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import * as NaNRule from 'isNaN';
 
 describe('Tests isNaN rule', () => {

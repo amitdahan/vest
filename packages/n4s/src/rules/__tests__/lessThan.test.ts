@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 import { lessThan } from 'lessThan';
 
@@ -59,7 +60,7 @@ describe('Tests lessThan rule', () => {
           // @ts-expect-error - Testing invalid input
           expect(lessThan(element, 0)).toBe(false);
         });
-      }
+      },
     );
   });
 });

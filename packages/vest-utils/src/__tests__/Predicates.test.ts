@@ -1,4 +1,5 @@
 import { all, any } from 'Predicates';
+import { describe, it, vi, expect } from 'vitest';
 
 describe('Predicates', () => {
   describe('all', () => {
@@ -9,7 +10,7 @@ describe('Predicates', () => {
     it('Should return true if all predicates return true', () => {
       const predicate = all(
         value => value > 0,
-        value => value < 10
+        value => value < 10,
       );
 
       expect(predicate(5)).toBe(true);
@@ -18,7 +19,7 @@ describe('Predicates', () => {
     it('Should return false if any predicate returns false', () => {
       const predicate = all(
         value => value > 0,
-        value => value < 10
+        value => value < 10,
       );
 
       expect(predicate(15)).toBe(false);
@@ -35,15 +36,15 @@ describe('Predicates', () => {
         value => value > 0,
         value => value < 10,
         // @ts-ignore - Testing invalid input
-        'not a function'
+        'not a function',
       );
 
       expect(predicate(15)).toBe(false);
     });
 
     it('Should pass each predicate the value', () => {
-      const spy1 = jest.fn(value => value > 0);
-      const spy2 = jest.fn(value => value < 10);
+      const spy1 = vi.fn(value => value > 0);
+      const spy2 = vi.fn(value => value < 10);
 
       const predicate = all(spy1, spy2);
 
@@ -71,21 +72,21 @@ describe('Predicates', () => {
       expect(
         any(
           value => value > 0,
-          value => value === 10
-        )(5)
+          value => value === 10,
+        )(5),
       ).toBe(true);
       expect(
         any(
           value => value === 10,
-          value => value > 0
-        )(5)
+          value => value > 0,
+        )(5),
       ).toBe(true);
     });
 
     it('Should return true if all predicates return true', () => {
       const predicate = any(
         value => value > 0,
-        value => value === 10
+        value => value === 10,
       );
 
       expect(predicate(10)).toBe(true);
@@ -94,7 +95,7 @@ describe('Predicates', () => {
     it('Should return false if all predicates return false', () => {
       const predicate = any(
         value => value > 0,
-        value => value === 10
+        value => value === 10,
       );
 
       expect(predicate(-5)).toBe(false);

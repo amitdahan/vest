@@ -1,4 +1,5 @@
 import { isArray } from 'isArrayValue';
+import { describe, it, expect } from 'vitest';
 
 describe('Tests isArray rule', () => {
   it('Should return true for an empty array', () => {

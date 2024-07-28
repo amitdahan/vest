@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`suite() exposed methods Should have all exposed methods 1`] = `
+exports[`suite() > exposed methods > Should have all exposed methods 1`] = `
 {
   "done": [Function],
   "errorCount": 0,
@@ -31,7 +31,7 @@ exports[`suite() exposed methods Should have all exposed methods 1`] = `
 }
 `;
 
-exports[`suite.get() exposed methods Should have all exposed methods 1`] = `
+exports[`suite.get() > exposed methods > Should have all exposed methods 1`] = `
 SuiteSummary {
   "errorCount": 0,
   "errors": [],

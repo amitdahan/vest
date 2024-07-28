@@ -4,7 +4,7 @@ import { isSameProfileTest } from 'isSameProfileTest';
 
 export default function cancelOverriddenPendingTest(
   prevRunTestObject: TIsolateTest,
-  currentRunTestObject: TIsolateTest
+  currentRunTestObject: TIsolateTest,
 ): void {
   if (
     currentRunTestObject !== prevRunTestObject &&

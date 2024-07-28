@@ -20,7 +20,7 @@ export class VestTest extends VestIsolate {
 
   static getData<
     F extends TFieldName = TFieldName,
-    G extends TGroupName = TGroupName
+    G extends TGroupName = TGroupName,
   >(test: TIsolateTest<F, G>) {
     invariant(test.data);
     return test.data;
@@ -29,7 +29,7 @@ export class VestTest extends VestIsolate {
   static is(isolate?: Maybe<TIsolate>): isolate is TIsolateTest {
     return IsolateSelectors.isIsolateType<TIsolateTest>(
       isolate,
-      VestIsolateType.Test
+      VestIsolateType.Test,
     );
   }
 
@@ -38,7 +38,7 @@ export class VestTest extends VestIsolate {
   }
 
   static cast<F extends TFieldName = string, G extends TGroupName = string>(
-    isolate?: Maybe<TIsolate>
+    isolate?: Maybe<TIsolate>,
   ): TIsolateTest<F, G> {
     VestTest.isX(isolate);
     return isolate as TIsolateTest<F, G>;
@@ -115,7 +115,7 @@ export class VestTest extends VestIsolate {
   static fail(test: TIsolateTest): void {
     VestTest.setStatus(
       test,
-      VestTest.warns(test) ? TestStatus.WARNING : TestStatus.FAILED
+      VestTest.warns(test) ? TestStatus.WARNING : TestStatus.FAILED,
     );
   }
 
@@ -134,7 +134,7 @@ export class VestTest extends VestIsolate {
     test: TIsolateTest,
     setter:
       | ((current: TIsolateTest['data']) => TIsolateTest['data'])
-      | TIsolateTest['data']
+      | TIsolateTest['data'],
   ): void {
     test.data = optionalFunctionValue(setter, VestTest.getData(test));
   }

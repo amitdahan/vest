@@ -1,6 +1,7 @@
-import { enforce } from 'n4s';
-
 import { Modes } from 'Modes';
+import { enforce } from 'n4s';
+import { describe, it, expect, test } from 'vitest';
+
 import * as vest from 'vest';
 
 describe('Stateful behavior', () => {
@@ -133,9 +134,9 @@ describe('more complex', () => {
           vest.test('confirm', 'passwords do not match', () => {
             enforce(data.confirm).equals(data.password);
           });
-        }
+        },
       );
-    }
+    },
   );
 });
 
@@ -147,7 +148,7 @@ function genSuite() {
     vest.test('field_2', 'field_statement_2', () => {
       enforce(2).equals(3);
     });
-    vest.test('field_3', 'field_statement_3', jest.fn());
+    vest.test('field_3', 'field_statement_3', vi.fn());
     vest.test('field_4', 'field_statement_4', () => {
       vest.warn();
       throw new Error();

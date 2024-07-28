@@ -1,5 +1,7 @@
-import { TTestSuite, TVestMock } from '../../../testUtils/TVestMock';
-import mockThrowError from '../../../testUtils/mockThrowError';
+import { deferThrow } from 'vest-utils';
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+
+import { TTestSuite } from '../../../testUtils/TVestMock';
 import { dummyTest } from '../../../testUtils/testDummy';
 
 import { TIsolateTest } from 'IsolateTest';
@@ -14,6 +16,18 @@ describe('Merging of previous test runs', () => {
   beforeEach(() => {
     counter = 0;
     testContainer = [];
+
+    vi.mock('vest-utils', async () => {
+      const vu = await vi.importActual('vest-utils');
+      return {
+        ...vu,
+        deferThrow: vi.fn(),
+      };
+    });
+  });
+
+  afterEach(() => {
+    vi.resetAllMocks();
   });
   describe('When test skipped in subsequent run', () => {
     it('Should merge its result from previous runs', () => {
@@ -76,22 +90,11 @@ describe('Merging of previous test runs', () => {
   });
 
   describe('When tests are passed in a different order between runs', () => {
-    let deferThrow: (message: string) => void, vest: TVestMock;
-    beforeEach(() => {
-      const mock = mockThrowError();
-      deferThrow = mock.deferThrow;
-      vest = mock.vest;
-    });
-
-    afterAll(() => {
-      jest.resetAllMocks();
-    });
-
     it('Should defer-throw an error', () => {
       suite = vest.create(() => {
         testContainer.push([
           counter === 0
-            ? vest.test('f1', jest.fn())
+            ? vest.test('f1', vi.fn())
             : vest.test('f2', () => false),
         ]);
         counter++;
@@ -101,11 +104,10 @@ describe('Merging of previous test runs', () => {
       expect(deferThrow).not.toHaveBeenCalled();
 
       suite();
-
       expect(deferThrow).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Vest Critical Error: Tests called in different order than previous run.'
-        )
+          'Vest Critical Error: Tests called in different order than previous run.',
+        ),
       );
     });
 
@@ -337,7 +339,7 @@ describe('Merging of previous test runs', () => {
               () => {
                 vest.test('f4', () => false);
                 vest.test('f5', () => false);
-              }
+              },
             );
             counter++;
           });

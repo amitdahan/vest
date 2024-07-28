@@ -1,3 +1,5 @@
+import { describe, it, expect } from 'vitest';
+
 import { TIsolate } from 'Isolate';
 import { IsolateInspector } from 'IsolateInspector';
 

@@ -1,4 +1,5 @@
 import { nonnullish } from 'nonnullish';
+import { describe, it, expect } from 'vitest';
 
 describe('nonnullish', () => {
   it('should return the value if it is not null or undefined', () => {

@@ -1,4 +1,6 @@
 import { Modes } from 'Modes';
+import { describe, it, expect } from 'vitest';
+
 import * as vest from 'vest';
 
 describe('state refill', () => {

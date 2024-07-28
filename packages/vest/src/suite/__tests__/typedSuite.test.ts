@@ -1,3 +1,5 @@
+import { describe, it, expect, beforeEach } from 'vitest';
+
 import * as vest from 'vest';
 
 type TestFields = 'F1' | 'F2' | 'F3';

@@ -1,7 +1,8 @@
-import wait from 'wait';
-
 import { TIsolateTest } from 'IsolateTest';
 import { VestTest } from 'VestTest';
+import { describe, it, expect, vi } from 'vitest';
+import wait from 'wait';
+
 import * as vest from 'vest';
 
 describe('runAsyncTest', () => {
@@ -26,9 +27,9 @@ describe('runAsyncTest', () => {
   describe('Callbacks', () => {
     describe('When there are no remaining pending tests', () => {
       it('Should run all callbacks', async () => {
-        const cb1 = jest.fn();
-        const cb2 = jest.fn();
-        const cb3 = jest.fn();
+        const cb1 = vi.fn();
+        const cb2 = vi.fn();
+        const cb3 = vi.fn();
 
         const suite = vest.create(() => {
           vest.test('field_1', async () => {
@@ -58,9 +59,9 @@ describe('runAsyncTest', () => {
 
     describe('When there are remaining pending tests', () => {
       it('Should only run callbacks for completed tests', async () => {
-        const cb1 = jest.fn();
-        const cb2 = jest.fn();
-        const cb3 = jest.fn();
+        const cb1 = vi.fn();
+        const cb2 = vi.fn();
+        const cb3 = vi.fn();
 
         const suite = vest.create(() => {
           vest.test('field_1', async () => {
@@ -89,9 +90,9 @@ describe('runAsyncTest', () => {
 
     describe('When the test run was canceled', () => {
       it('Should not run the callbacks', async () => {
-        const cb1 = jest.fn();
-        const cb2 = jest.fn();
-        const cb3 = jest.fn();
+        const cb1 = vi.fn();
+        const cb2 = vi.fn();
+        const cb3 = vi.fn();
 
         const testObject: Array<TIsolateTest> = [];
 
@@ -99,7 +100,7 @@ describe('runAsyncTest', () => {
           testObject.push(
             vest.test('field_1', async () => {
               await wait(10);
-            })
+            }),
           );
           vest.test('field_2', () => {});
         });

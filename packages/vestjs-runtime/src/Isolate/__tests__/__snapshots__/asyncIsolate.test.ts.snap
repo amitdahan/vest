@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`AsyncIsolate It should resolve async isolate into the parent 2`] = `
+exports[`AsyncIsolate > It should resolve async isolate into the parent 2`] = `
 {
   "$type": "URoot",
   "abortController": AbortController {},

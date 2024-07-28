@@ -57,7 +57,7 @@ The naming convention for a test file is `moduleName.test.ts`.
 
 #### Running tests
 
-To run tests, you need to run `vx test`. This will run all tests in all packages. The tests are being run by jest.
+To run tests, you need to run `vx test`. This will run all tests in all packages. The tests are being run by vitest.
 
 You can narrow it down by specifying the package name:
 

@@ -1,4 +1,5 @@
 import asArray from 'asArray';
+import { describe, it, expect } from 'vitest';
 
 describe('asArray', () => {
   it('should return an array', () => {

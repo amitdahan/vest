@@ -17,7 +17,7 @@ import { TestMemo } from 'test.memo';
 
 export function getTypedMethods<
   F extends TFieldName,
-  G extends TGroupName
+  G extends TGroupName,
 >(): TTypedMethods<F, G> {
   return {
     group,
@@ -60,5 +60,5 @@ export type TTypedMethods<F extends TFieldName, G extends TGroupName> = {
 
 export type TDraftCondition<
   F extends TFieldName,
-  G extends TGroupName
+  G extends TGroupName,
 > = DynamicValue<boolean, [draft: SuiteResult<F, G>]>;

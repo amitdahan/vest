@@ -1,8 +1,10 @@
+import { Modes } from 'Modes';
+import { describe, it, expect, vi } from 'vitest';
+
 import { dummyTest } from '../../testUtils/testDummy';
 import classnames from '../classnames';
 import promisify from '../promisify';
 
-import { Modes } from 'Modes';
 import * as vest from 'vest';
 
 describe('Utility: classnames', () => {
@@ -21,17 +23,17 @@ describe('Utility: classnames', () => {
   describe('When called with a vest result object', () => {
     it('Should return a function', async () => {
       const validate = vest.create(
-        jest.fn(() => {
+        vi.fn(() => {
           dummyTest.failing('field_0');
-        })
+        }),
       );
       expect(typeof classnames(validate())).toBe('function');
       const promisifed = await promisify(
         vest.create(
-          jest.fn(() => {
+          vi.fn(() => {
             dummyTest.failing('field_0');
-          })
-        )
+          }),
+        ),
       )();
       expect(typeof classnames(promisifed)).toBe('function');
     });
@@ -66,21 +68,21 @@ describe('Utility: classnames', () => {
 
       // splitting and sorting to not rely on object order which is unspecified in the language
       expect(genClass('field_2').split(' ').sort()).toEqual(
-        'invalid_string tested_string warning_string'.split(' ').sort()
+        'invalid_string tested_string warning_string'.split(' ').sort(),
       );
       expect(genClass('field_3').split(' ').sort()).toEqual(
-        'tested_string valid_string warning_string'.split(' ').sort()
+        'tested_string valid_string warning_string'.split(' ').sort(),
       );
       expect(genClass('field_4').split(' ').sort()).toEqual(
-        'tested_string valid_string'.split(' ').sort()
+        'tested_string valid_string'.split(' ').sort(),
       );
 
       expect(genClass('field_5').split(' ').sort()).toEqual(
-        'tested_string invalid_string'.split(' ').sort()
+        'tested_string invalid_string'.split(' ').sort(),
       );
 
       expect(genClass('field_6').split(' ').sort()).toEqual(
-        'untested_string'.split(' ').sort()
+        'untested_string'.split(' ').sort(),
       );
     });
   });
@@ -95,10 +97,10 @@ describe('Utility: classnames', () => {
 
       // splitting and sorting to not rely on object order which is unspecified in the language
       expect(genClass('field_2').split(' ').sort()).toEqual(
-        'invalid_string'.split(' ').sort()
+        'invalid_string'.split(' ').sort(),
       );
       expect(genClass('field_3').split(' ').sort()).toEqual(
-        ''.split(' ').sort()
+        ''.split(' ').sort(),
       );
     });
   });
@@ -120,10 +122,10 @@ describe('Utility: classnames', () => {
 
       // splitting and sorting to not rely on object order which is unspecified in the language
       expect(genClass('field_2').split(' ').sort()).toEqual(
-        ''.split(' ').sort()
+        ''.split(' ').sort(),
       );
       expect(genClass('field_3').split(' ').sort()).toEqual(
-        ''.split(' ').sort()
+        ''.split(' ').sort(),
       );
     });
   });

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test.memo cache hit Should produce correct initial result 1`] = `
+exports[`test.memo > cache hit > Should produce correct initial result 1`] = `
 {
   "done": [Function],
   "errorCount": 1,
@@ -73,7 +73,7 @@ exports[`test.memo cache hit Should produce correct initial result 1`] = `
 }
 `;
 
-exports[`test.memo cache hit sync Should restore previous result on re-run 1`] = `
+exports[`test.memo > cache hit > sync > Should restore previous result on re-run 1`] = `
 {
   "done": [Function],
   "errorCount": 1,
