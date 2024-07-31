@@ -79,7 +79,7 @@ describe('hasErrorsByGroup', () => {
           });
         });
         expect(suite().hasErrorsByGroup(groupName, 'non_matching_field')).toBe(
-          false
+          false,
         );
       });
     });
@@ -167,7 +167,7 @@ describe('hasWarningsByGroup', () => {
           });
         });
         expect(
-          suite().hasWarningsByGroup(groupName, 'non_matching_field')
+          suite().hasWarningsByGroup(groupName, 'non_matching_field'),
         ).toBe(false);
       });
     });

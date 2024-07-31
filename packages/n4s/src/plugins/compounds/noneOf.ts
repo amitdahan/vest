@@ -11,6 +11,6 @@ export function noneOf(value: unknown, ...rules: Lazy[]): RuleDetailedResult {
       const res = runLazyRule(rule, value);
 
       breakout(res.pass, ruleReturn.failing());
-    })
+    }),
   );
 }

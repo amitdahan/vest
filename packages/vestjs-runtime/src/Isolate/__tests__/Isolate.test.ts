@@ -39,7 +39,7 @@ describe('Isolate', () => {
           () => {
             return 'foo';
           },
-          {}
+          {},
         );
       });
       expect(isolate.output).toBe('foo');

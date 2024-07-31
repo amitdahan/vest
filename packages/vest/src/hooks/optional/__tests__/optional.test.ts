@@ -250,7 +250,7 @@ describe('optional hook', () => {
             expect(res.hasErrors('field_1')).toBe(false);
             expect(res.isValid('field_1')).toBe(true);
             expect(res.isValid()).toBe(true);
-          }
+          },
         );
       });
 

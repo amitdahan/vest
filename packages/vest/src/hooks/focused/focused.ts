@@ -27,7 +27,7 @@ export type IsolateFocusedPayload = {
 
 export function IsolateFocused(
   focusMode: FocusModes,
-  match?: true | FieldExclusion<TFieldName>
+  match?: true | FieldExclusion<TFieldName>,
 ): TIsolateFocused {
   return Isolate.create(VestIsolateType.Focused, noop, {
     focusMode,
@@ -39,7 +39,7 @@ export function IsolateFocused(
 export class FocusSelectors {
   static isSkipFocused(
     focus: Nullable<TIsolateFocused>,
-    fieldName?: TFieldName
+    fieldName?: TFieldName,
   ): boolean {
     return (
       focus?.data.focusMode === FocusModes.SKIP &&
@@ -48,7 +48,7 @@ export class FocusSelectors {
   }
   static isOnlyFocused(
     focus: Nullable<TIsolateFocused>,
-    fieldName?: TFieldName
+    fieldName?: TFieldName,
   ): boolean {
     return (
       focus?.data.focusMode === FocusModes.ONLY && hasFocus(focus, fieldName)

@@ -9,7 +9,7 @@ import { VestTest } from 'VestTest';
  */
 export function nonMatchingSeverityProfile(
   severity: Severity,
-  testObject: TIsolateTest
+  testObject: TIsolateTest,
 ): boolean {
   return either(severity === Severity.WARNINGS, VestTest.warns(testObject));
 }

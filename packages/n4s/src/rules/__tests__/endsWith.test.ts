@@ -9,7 +9,7 @@ describe('Tests isArray rule', () => {
 
   it('Should return true for a suffix', () => {
     expect(endsWith(word, word.substring(word.length / 2, word.length))).toBe(
-      true
+      true,
     );
   });
 

@@ -10,9 +10,9 @@ describe('methods/none', () => {
       expect(
         none(
           ...Array.from({ length: random(1, 10) }, (_, i) =>
-            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES)
-          )
-        )
+            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES),
+          ),
+        ),
       ).toBe(true);
     });
   });
@@ -22,9 +22,9 @@ describe('methods/none', () => {
       expect(
         none(
           ...Array.from({ length: random(1, 10) }, (_, i) =>
-            i % 2 === 0 ? sample(TRUTHY_VALUES) : sample(TRUTHY_VALUES)
-          )
-        )
+            i % 2 === 0 ? sample(TRUTHY_VALUES) : sample(TRUTHY_VALUES),
+          ),
+        ),
       ).toBe(false);
     });
   });
@@ -34,10 +34,10 @@ describe('methods/none', () => {
       expect(
         none.apply(null, [
           ...Array.from({ length: random(1, 10) }, (_, i) =>
-            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES)
+            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES),
           ),
           sample(TRUTHY_VALUES),
-        ])
+        ]),
       ).toBe(false);
     });
   });
@@ -47,12 +47,12 @@ describe('methods/none', () => {
       expect(
         none.apply(null, [
           ...Array.from({ length: random(1, 10) }, (_, i) =>
-            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES)
+            i % 2 === 0 ? sample(FALSY_VALUES) : sample(FALSY_VALUES),
           ),
           ...Array.from({ length: random(1, 10) }, (_, i) =>
-            i % 2 === 0 ? sample(TRUTHY_VALUES) : sample(TRUTHY_VALUES)
+            i % 2 === 0 ? sample(TRUTHY_VALUES) : sample(TRUTHY_VALUES),
           ),
-        ])
+        ]),
       ).toBe(false);
     });
   });

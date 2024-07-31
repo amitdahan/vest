@@ -8,7 +8,7 @@ export const nonMatchingGroupName = bindNot(matchingGroupName);
 
 export function matchingGroupName(
   testObject: TIsolateTest,
-  groupName: Maybe<TGroupName>
+  groupName: Maybe<TGroupName>,
 ): boolean {
   return VestTest.getData(testObject).groupName === groupName;
 }

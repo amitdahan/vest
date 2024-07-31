@@ -61,7 +61,7 @@ describe('Tests numberEquals rule', () => {
           // @ts-expect-error - testing invalid input
           expect(numberEquals(element, 0)).toBe(false);
         });
-      }
+      },
     );
   });
 });

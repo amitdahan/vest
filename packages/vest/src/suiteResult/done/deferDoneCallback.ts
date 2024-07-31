@@ -5,7 +5,7 @@ import { TFieldName } from 'SuiteResultTypes';
 
 export function useDeferDoneCallback(
   doneCallback: DoneCallback,
-  fieldName?: TFieldName
+  fieldName?: TFieldName,
 ): void {
   const [, setFieldCallbacks] = useFieldCallbacks();
   const [, setDoneCallbacks] = useDoneCallbacks();
@@ -14,7 +14,7 @@ export function useDeferDoneCallback(
     setFieldCallbacks(fieldCallbacks =>
       assign(fieldCallbacks, {
         [fieldName]: (fieldCallbacks[fieldName] || []).concat(doneCallback),
-      })
+      }),
     );
 
     return;

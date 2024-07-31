@@ -127,7 +127,7 @@ describe('Stateful async tests', () => {
         vest.test('field_1', tests.length.toString(), async () => {
           await wait(100);
           throw new Error();
-        })
+        }),
       );
     });
     suite().done(() => {

@@ -38,7 +38,7 @@ describe('Tests isKeyOf rule', () => {
       'Should throw when %s is an object',
       v => {
         expect(() => enforce(DUMMY_KEY).isKeyOf({ v })).toThrow();
-      }
+      },
     );
   });
 });

@@ -8,7 +8,7 @@ describe('enforce.loose for loose matching', () => {
       expect(
         enforce
           .loose({ username: enforce.isString(), age: enforce.isNumber() })
-          .run({ username: 'ealush', age: 31, foo: 'bar' })
+          .run({ username: 'ealush', age: 31, foo: 'bar' }),
       ).toEqual(ruleReturn.passing());
     });
   });

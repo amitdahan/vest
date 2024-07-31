@@ -133,9 +133,9 @@ describe('more complex', () => {
           vest.test('confirm', 'passwords do not match', () => {
             enforce(data.confirm).equals(data.password);
           });
-        }
+        },
       );
-    }
+    },
   );
 });
 

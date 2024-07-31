@@ -10,13 +10,13 @@ import { FocusSelectors } from 'focused';
  */
 export function useHasOnliedTests(
   testObject: TIsolateTest,
-  fieldName?: TFieldName
+  fieldName?: TFieldName,
 ): boolean {
   return isNotNullish(
     Walker.findClosest(testObject, (child: TIsolate) => {
       if (!FocusSelectors.isIsolateFocused(child)) return false;
 
       return FocusSelectors.isOnlyFocused(child, fieldName);
-    })
+    }),
   );
 }

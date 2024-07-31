@@ -7,7 +7,7 @@ import type { ShapeObject } from 'schemaTypes';
 
 export function shape(
   inputObject: Record<string, any>,
-  shapeObject: ShapeObject
+  shapeObject: ShapeObject,
 ): RuleDetailedResult {
   const baseRes = loose(inputObject, shapeObject);
   if (!baseRes.pass) {

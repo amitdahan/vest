@@ -40,6 +40,8 @@ jobs:
         run: yarn install --immutable
       - name: Test
         run: yarn test
+      - name: Format
+        run: yarn format
       - name: Lint
         run: yarn lint
       - name: Release

@@ -104,8 +104,8 @@ describe('Merging of previous test runs', () => {
 
       expect(deferThrow).toHaveBeenCalledWith(
         expect.stringContaining(
-          'Vest Critical Error: Tests called in different order than previous run.'
-        )
+          'Vest Critical Error: Tests called in different order than previous run.',
+        ),
       );
     });
 
@@ -337,7 +337,7 @@ describe('Merging of previous test runs', () => {
               () => {
                 vest.test('f4', () => false);
                 vest.test('f5', () => false);
-              }
+              },
             );
             counter++;
           });

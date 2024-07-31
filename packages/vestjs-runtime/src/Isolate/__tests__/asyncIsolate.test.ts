@@ -32,15 +32,15 @@ describe('AsyncIsolate', () => {
       expect(root?.children?.[0].parent).toBe(root);
       expect(root?.children?.[0]?.children?.[0]?.$type).toBe('UGrandChild_1');
       expect(root?.children?.[0]?.children?.[0].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root?.children?.[0]?.children?.[1]?.$type).toBe('UGrandChild_2');
       expect(root?.children?.[0]?.children?.[1].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root?.children?.[0]?.children?.[2]?.$type).toBe('UGrandChild_3');
       expect(root?.children?.[0]?.children?.[2].parent).toBe(
-        root?.children?.[0]
+        root?.children?.[0],
       );
       expect(root).toMatchSnapshot();
 
@@ -88,6 +88,6 @@ async function genChildren() {
       Isolate.create('UGrandChild_1', () => {});
       Isolate.create('UGrandChild_2', () => {});
       Isolate.create('UGrandChild_3', () => {});
-    })
+    }),
   );
 }

@@ -26,7 +26,7 @@ export default function genEnforceLazy(key: string) {
       const rule = getRule(ruleName);
 
       registeredRules.push((value: RuleValue) =>
-        transformResult(rule(value, ...args), ruleName, value, ...args)
+        transformResult(rule(value, ...args), ruleName, value, ...args),
       );
 
       let proxy = {
@@ -40,10 +40,10 @@ export default function genEnforceLazy(key: string) {
                 ruleReturn(
                   !!res.pass,
                   optionalFunctionValue(lazyMessage, value, res.message) ??
-                    res.message
-                )
+                    res.message,
+                ),
               );
-            })
+            }),
           );
         },
         test: (value: RuleValue): boolean => proxy.run(value).pass,

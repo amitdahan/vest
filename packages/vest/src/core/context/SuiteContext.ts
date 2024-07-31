@@ -23,7 +23,7 @@ export const SuiteContext = createCascade<CTXType>((ctxRef, parentContext) => {
       suiteParams: [],
       testMemoCache,
     },
-    ctxRef
+    ctxRef,
   );
 });
 

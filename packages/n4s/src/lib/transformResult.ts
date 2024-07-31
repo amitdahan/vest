@@ -20,7 +20,7 @@ export function transformResult(
   }
   return ruleReturn(
     result.pass,
-    optionalFunctionValue(result.message, ruleName, value, ...args)
+    optionalFunctionValue(result.message, ruleName, value, ...args),
   );
 }
 
@@ -28,6 +28,6 @@ function validateResult(result: RuleReturn): void {
   // if result is boolean, or if result.pass is boolean
   invariant(
     isBoolean(result) || (result && isBoolean(result.pass)),
-    'Incorrect return value for rule: ' + JSON.stringify(result)
+    'Incorrect return value for rule: ' + JSON.stringify(result),
   );
 }

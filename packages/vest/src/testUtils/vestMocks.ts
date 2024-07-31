@@ -4,7 +4,7 @@ import { IsolateTestBase, IsolateTestPayload, TIsolateTest } from 'IsolateTest';
 import { VestIsolateType } from 'VestIsolateType';
 
 export function mockIsolateTest(
-  payload: Partial<IsolateTestPayload> = {}
+  payload: Partial<IsolateTestPayload> = {},
 ): TIsolateTest {
   const isolate = genTestIsolate({
     ...IsolateTestBase(),

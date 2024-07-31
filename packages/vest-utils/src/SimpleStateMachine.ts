@@ -20,7 +20,7 @@ export type TStateMachineApi<S extends string = string, A extends S = S> = {
 };
 
 export function StateMachine<S extends string = string, A extends S = S>(
-  machine: TStateMachine<S, A>
+  machine: TStateMachine<S, A>,
 ): TStateMachineApi<S, A> {
   let state = machine.initial;
 

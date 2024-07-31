@@ -4,7 +4,7 @@ import * as ruleReturn from 'ruleReturn';
 
 export default function runLazyRule(
   lazyRule: LazyRuleRunners,
-  currentValue: any
+  currentValue: any,
 ): RuleDetailedResult {
   try {
     return lazyRule.run(currentValue);

@@ -27,7 +27,7 @@ module.exports = function genTsConfig() {
 
     if (isConfigEqual(tsConfigPath, tsConfig)) {
       logger.log(
-        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`
+        `✅ tsConfig for package '${packageName}' is up to date. Skipping.`,
       );
       return;
     }

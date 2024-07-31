@@ -59,7 +59,7 @@ describe('Tests lessThanOrEquals rule', () => {
           // @ts-expect-error - Testing invalid input
           expect(lessThanOrEquals(element, 0)).toBe(false);
         });
-      }
+      },
     );
   });
 });

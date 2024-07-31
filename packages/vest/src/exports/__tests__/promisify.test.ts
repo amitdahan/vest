@@ -18,8 +18,8 @@ describe('Utility: promisify', () => {
       vest.create(
         jest.fn(() => {
           dummyTest.failing('field_0');
-        })
-      )
+        }),
+      ),
     );
     validateAsync = promisify(validatorFn);
   });
@@ -52,7 +52,7 @@ describe('Utility: promisify', () => {
           vest.create(() => {
             dummyTest.failing('field_0');
             done();
-          })
+          }),
         );
         validateAsync();
       }));

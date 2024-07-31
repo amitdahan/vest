@@ -47,7 +47,7 @@ export function wrapTestMemo<FN extends TFieldName>(test: VTest): TestMemo<FN> {
 
 function useGetTestFromCache(
   dependencies: any[],
-  cacheAction: CB<TIsolateTest>
+  cacheAction: CB<TIsolateTest>,
 ): TIsolateTest {
   const cache = useTestMemoCache();
 
@@ -80,7 +80,7 @@ type ParametersWithoutMessage = [test: TestFn, dependencies: unknown[]];
 type ParametersWithMessage = [
   message: string,
   test: TestFn,
-  dependencies: unknown[]
+  dependencies: unknown[],
 ];
 
 type ParamsOverload = ParametersWithoutMessage | ParametersWithMessage;

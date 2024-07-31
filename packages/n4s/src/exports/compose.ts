@@ -19,7 +19,7 @@ export default function compose(
     {
       run,
       test: (value: any) => run(value).pass,
-    }
+    },
   );
 
   function run(value: any): RuleDetailedResult {
@@ -29,7 +29,7 @@ export default function compose(
           composites,
           (
             composite: LazyRuleRunners,
-            breakout: (conditional: boolean, res: RuleDetailedResult) => void
+            breakout: (conditional: boolean, res: RuleDetailedResult) => void,
           ) => {
             /* HACK: Just a small white lie. ~~HELP WANTED~~.
                The ideal is that instead of `LazyRuleRunners` We would simply use `Lazy` to begin with.
@@ -40,8 +40,8 @@ export default function compose(
             const res = runLazyRule(composite, value);
 
             breakout(!res.pass, res);
-          }
-        )
+          },
+        ),
       );
     });
   }

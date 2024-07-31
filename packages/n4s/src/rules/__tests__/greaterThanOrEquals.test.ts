@@ -55,7 +55,7 @@ describe('Tests greaterThanOrEquals rule', () => {
           // @ts-expect-error - Testing invalid input
           expect(greaterThanOrEquals(element, 0)).toBe(false);
         });
-      }
+      },
     );
   });
 });

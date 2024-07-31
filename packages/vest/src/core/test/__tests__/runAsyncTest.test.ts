@@ -99,7 +99,7 @@ describe('runAsyncTest', () => {
           testObject.push(
             vest.test('field_1', async () => {
               await wait(10);
-            })
+            }),
           );
           vest.test('field_2', () => {});
         });
