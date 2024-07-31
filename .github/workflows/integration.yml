@@ -40,6 +40,8 @@ jobs:
         run: yarn install --immutable
       - name: Ensure deps are deduped
         run: yarn dedupe --check
+      - name: Build
+        run: yarn build
       - name: Test
         run: yarn test
       - name: Lint
