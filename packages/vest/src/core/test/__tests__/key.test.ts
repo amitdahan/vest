@@ -209,8 +209,6 @@ describe('key', () => {
         expect(deferThrow).toHaveBeenCalledWith(
           `Encountered the same key "key_1" twice. This may lead to inconsistent or overriding of results.`,
         );
-
-        vi.resetAllMocks();
       });
     });
   });
